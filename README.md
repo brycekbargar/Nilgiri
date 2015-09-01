@@ -1,5 +1,5 @@
 # Nilgiri
-Chai style assertions for .NET  
+Chai.js style assertions for .NET  
 *nilgiri is some sort of black tea but it was the only one that started with 'n'...*
 
 ### To "Build" ###
