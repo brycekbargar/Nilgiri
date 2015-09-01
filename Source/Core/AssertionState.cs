@@ -1,0 +1,14 @@
+namespace Nilgri.Core
+{
+  using System;
+
+  public class AssertionState<T>
+  {
+    public Func<T> TestExpression { get; private set; }
+
+    public AssertionState(Func<T> testExpression)
+    {
+      TestExpression = testExpression;
+    }
+  }
+}
