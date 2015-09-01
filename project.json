@@ -1,10 +1,19 @@
 {
   "copyright": "Copyright (c) 2015 Bryce",
   "licenseUrl": "https://github.com/brycekbargar/Nilgiri/blob/master/LICENSE",
-  "owners": [ "Bryce" ],
+  "owners": [
+    "Bryce"
+  ],
   "projectUrl": "https://github.com/brycekbargar/Nilgiri",
   "summary": "Chai.js style assertions for .NET",
-  "tags": [ "dotnetcore", "dnx", "dnu", "chai", "tdd", "bdd" ],
+  "tags": [
+    "dotnetcore",
+    "dnx",
+    "dnu",
+    "chai",
+    "tdd",
+    "bdd"
+  ],
   "title": "Nilgiri",
   "language": "en-us",
   "repository": {
@@ -13,7 +22,8 @@
   },
   "dependencies": {
     "xunit": "2.1.0-beta4-build3109",
-    "xunit.runner.dnx": "2.1.0-beta4-build134"
+    "xunit.runner.dnx": "2.1.0-beta4-build134",
+    "fakeiteasy": "2.0.0-beta009"
   },
   "commands": {
     "test": "xunit.runner.dnx"
