@@ -4,13 +4,14 @@ namespace Nilgri.Specs.Core
   using Xunit;
   using Nilgri.Core;
 
-  public class EqualSpecs
+  using Subject = Nilgri.Core.EqualAsserter;
+  public class EqualAsserter
   {
-    protected EqualAsserter UnitUnderTest;
+    private Subject _subject;
 
-    public EqualSpecs()
+    public EqualAsserter()
     {
-      UnitUnderTest = new EqualAsserter();
+      _subject = new Subject();
     }
 
     [Fact]
@@ -18,7 +19,7 @@ namespace Nilgri.Specs.Core
     {
       var testState = new AssertionState<int>(() => 1);
 
-      UnitUnderTest.Assert(testState, 1);
+      _subject.Assert(testState, 1);
     }
 
     [Fact]
@@ -26,7 +27,7 @@ namespace Nilgri.Specs.Core
     {
       var testState = new AssertionState<int>(() => 1);
 
-      Assert.Throws<Exception>(() => UnitUnderTest.Assert(testState, 2));
+      Assert.Throws<Exception>(() => _subject.Assert(testState, 2));
     }
   }
 }
