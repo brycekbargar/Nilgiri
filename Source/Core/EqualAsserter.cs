@@ -11,10 +11,17 @@ namespace Nilgiri.Core
   {
     public void Assert<T>(AssertionState<T> assertionState, T toEqual)
     {
-      if(false == Equals(assertionState.TestExpression(), toEqual))
+      if(
+      (!assertionState.IsNegated &&
+      Equals(assertionState.TestExpression(), toEqual))
+      ||
+      (assertionState.IsNegated &&
+      !Equals(assertionState.TestExpression(), toEqual)))
       {
-        throw new Exception();
+        return;
       }
+
+      throw new Exception();
     }
   }
 }
