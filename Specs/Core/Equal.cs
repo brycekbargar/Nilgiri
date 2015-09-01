@@ -1,5 +1,6 @@
 namespace Nilgri.Specs.Core
 {
+  using System;
   using Xunit;
   using Nilgri.Core;
 
@@ -18,6 +19,14 @@ namespace Nilgri.Specs.Core
       var testState = new AssertionState<int>(() => 1);
 
       UnitUnderTest.Assert(testState, 1);
+    }
+
+    [Fact]
+    public void Fail()
+    {
+      var testState = new AssertionState<int>(() => 1);
+
+      Assert.Throws<Exception>(() => UnitUnderTest.Assert(testState, 2));
     }
   }
 }
