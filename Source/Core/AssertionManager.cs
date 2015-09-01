@@ -13,6 +13,15 @@ namespace Nilgiri.Core
 
     public AssertionManager<T> To { get { return this; } }
 
+    public AssertionManager<T> Not
+    {
+      get
+      {
+        _assertionState.IsNegated = true;
+        return this;
+      }
+    }
+
     public void Equal(T toEqual)
     {
       _equalAsserter.Assert<T>(_assertionState, toEqual);

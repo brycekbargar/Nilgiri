@@ -20,6 +20,33 @@ namespace Nilgiri.Specs.Core
       }
     }
 
+    public class Not
+    {
+      [Fact]
+      public void Returns_itself()
+      {
+        var subject = new Subject(new AssertionState<int>(() => 1), null);
+
+        var notSubject = subject.Not;
+
+        Assert.Equal(subject, notSubject);
+      }
+
+      [Fact]
+      public void Mutates_AssertionState()
+      {
+        var assertionState = new AssertionState<int>(() => 1)
+        {
+          IsNegated = false
+        };
+        var subject = new Subject(assertionState, null);
+
+        var notSubject = subject.Not;
+
+        Assert.True(assertionState.IsNegated);
+      }
+    }
+
     public class Equal
     {
       [Fact]
