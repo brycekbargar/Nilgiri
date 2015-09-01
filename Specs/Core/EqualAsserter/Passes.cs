@@ -1,10 +1,10 @@
-namespace Nilgri.Specs.Core
+namespace Nilgiri.Specs.Core
 {
   using System;
   using Xunit;
-  using Nilgri.Core;
+  using Nilgiri.Core;
 
-  using Subject = Nilgri.Core.EqualAsserter;
+  using Subject = Nilgiri.Core.EqualAsserter;
   public partial class EqualAsserter
   {
     public class Passes

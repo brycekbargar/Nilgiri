@@ -1,6 +1,6 @@
-# Nilgri
+# Nilgiri
 Chai style assertions for .NET  
-*nilgri is some sort of black tea but it was the only one that started with 'n'...*
+*nilgiri is some sort of black tea but it was the only one that started with 'n'...*
 
 ### To "Build" ###
 I hate how .NET shoves all the packages in a global folder...  

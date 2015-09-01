@@ -1,4 +1,4 @@
-namespace Nilgri.Core
+namespace Nilgiri.Core
 {
   using System;
 
