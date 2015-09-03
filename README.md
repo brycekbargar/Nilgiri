@@ -11,10 +11,10 @@ Why not bring them to .NET?
 ### To Use ###
 #### Expect ####
 ```
-using Nilgiri.Expect;
+using static Nilgiri.ExpectStyle;
 
-Expect._(1).To.Equal(1);
-Expect._(() => Someclass.Someprop).To.Not.Equal(1);
+Expect(1).To.Equal(1);
+Expect(() => Someclass.Someprop).To.Not.Equal(1);
 ```
 
 #### Should ####
