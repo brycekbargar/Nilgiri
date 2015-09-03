@@ -1,7 +1,7 @@
-namespace Nilgiri.IntegrationTests.Core
+namespace Nilgiri.IntegrationTests
 {
   using Xunit;
-  using Nilgiri.Core.Should;
+  using Nilgiri.Should;
 
   public partial class StaticExpect
   {

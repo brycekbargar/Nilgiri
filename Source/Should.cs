@@ -1,4 +1,4 @@
-namespace Nilgiri.Core.Should
+namespace Nilgiri.Should
 {
   using System;
   using Nilgiri.Core;

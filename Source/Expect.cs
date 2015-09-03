@@ -1,6 +1,7 @@
-namespace Nilgiri.Core
+namespace Nilgiri.Expect
 {
   using System;
+  using Nilgiri.Core;
 
   public static class Expect
   {
