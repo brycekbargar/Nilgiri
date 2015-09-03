@@ -8,5 +8,10 @@ namespace Nilgiri.Core
     {
       return new AssertionManager<T>(new AssertionState<T>(testExpression), new EqualAsserter());
     }
+
+    public static IToableAssertionManager<T> _<T>(T testValue)
+    {
+      return _(() => testValue);
+    }
   }
 }

@@ -14,9 +14,11 @@ namespace Nilgiri.IntegrationTests.Core
         {
           var testValue = 1;
 
-          var ex = Record.Exception(() => Expect._(() => testValue).To.Equal(testValue));
+          var exFunc = Record.Exception(() => Expect._(() => testValue).To.Equal(testValue));
+          var exValue = Record.Exception(() => Expect._(testValue).To.Equal(testValue));
 
-          Assert.Null(ex);
+          Assert.Null(exFunc);
+          Assert.Null(exValue);
         }
 
         [Fact]
@@ -24,9 +26,11 @@ namespace Nilgiri.IntegrationTests.Core
         {
           var testValue = @"I'm a string!";
 
-          var ex = Record.Exception(() => Expect._(() => testValue).To.Equal(testValue));
+          var exFunc = Record.Exception(() => Expect._(() => testValue).To.Equal(testValue));
+          var exValue = Record.Exception(() => Expect._(testValue).To.Equal(testValue));
 
-          Assert.Null(ex);
+          Assert.Null(exFunc);
+          Assert.Null(exValue);
         }
 
         [Fact]
@@ -34,9 +38,11 @@ namespace Nilgiri.IntegrationTests.Core
         {
           var testValue = new { I = "Have ", AtLeast = 3, Properties = true};
 
-          var ex = Record.Exception(() => Expect._(() => testValue).To.Equal(testValue));
+          var exFunc = Record.Exception(() => Expect._(() => testValue).To.Equal(testValue));
+          var exValue = Record.Exception(() => Expect._(testValue).To.Equal(testValue));
 
-          Assert.Null(ex);
+          Assert.Null(exFunc);
+          Assert.Null(exValue);
         }
       }
     }

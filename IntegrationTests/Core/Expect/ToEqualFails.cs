@@ -12,28 +12,39 @@ namespace Nilgiri.IntegrationTests.Core
         [Fact]
         public void Int32()
         {
-          var ex = Record.Exception(() => Expect._(() => 1).To.Equal(5163256));
+          var testValue = 1;
+          var otherValue = 1612316;
 
-          Assert.NotNull(ex);
+          var exFunc = Record.Exception(() => Expect._(() => testValue).To.Equal(otherValue));
+          var exValue = Record.Exception(() => Expect._(testValue).To.Equal(otherValue));
+
+          Assert.NotNull(exFunc);
+          Assert.NotNull(exValue);
         }
 
         [Fact]
         public void String()
         {
-          var ex = Record.Exception(() => Expect._(() => @"I'm a string!").To.Equal("Another string"));
+          var testValue = @"I'm a string!";
+          var otherValue = @"Another string";
+          var exFunc = Record.Exception(() => Expect._(() => testValue).To.Equal(otherValue));
+          var exValue = Record.Exception(() => Expect._(testValue).To.Equal(otherValue));
 
-          Assert.NotNull(ex);
+          Assert.NotNull(exFunc);
+          Assert.NotNull(exValue);
         }
 
         [Fact]
         public void Object()
         {
           var testValue = new { I = "Have ", AtLeast = 3, Properties = true};
-          var differentTestValue = new { I = "Do not have ", AtLeast = 5, Properties = true};
+          var otherValue = new { I = "Do not have ", AtLeast = 5, Properties = true};
 
-          var ex = Record.Exception(() => Expect._(() => testValue).To.Equal(differentTestValue));
+          var exFunc = Record.Exception(() => Expect._(() => testValue).To.Equal(otherValue));
+          var exValue = Record.Exception(() => Expect._(testValue).To.Equal(otherValue));
 
-          Assert.NotNull(ex);
+          Assert.NotNull(exFunc);
+          Assert.NotNull(exValue);
         }
       }
     }
