@@ -3,9 +3,9 @@ namespace Nilgiri.IntegrationTests.Core
   using Xunit;
   using Nilgiri.Core;
 
-  public class StaticExpect
+  public partial class StaticExpect
   {
-    public class _To_Equal
+    public partial class _To_Equal
     {
       public class Passes
       {
