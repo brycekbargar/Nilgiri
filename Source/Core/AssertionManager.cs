@@ -1,6 +1,6 @@
 namespace Nilgiri.Core
 {
-  public class AssertionManager<T>
+  public class AssertionManager<T> : IAssertionManager<T>, INegatableAssertionManager<T>, IToableAssertionManager<T>
   {
     private readonly AssertionState<T> _assertionState;
     private readonly IEqualAsserter _equalAsserter;
@@ -11,9 +11,9 @@ namespace Nilgiri.Core
       _equalAsserter = equalAsserter;
     }
 
-    public AssertionManager<T> To { get { return this; } }
+    public INegatableAssertionManager<T> To { get { return this; } }
 
-    public AssertionManager<T> Not
+    public IAssertionManager<T> Not
     {
       get
       {
