@@ -1,4 +1,6 @@
 # Nilgiri
+[![Build Status](https://travis-ci.org/brycekbargar/Nilgiri.svg)](https://travis-ci.org/brycekbargar/Nilgiri)
+
 Chai.js style assertions for .NET  
 *nilgiri is some sort of black tea but it was the only one that started with 'n'...*
 
