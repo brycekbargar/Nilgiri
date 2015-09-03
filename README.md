@@ -30,10 +30,10 @@ _(() => Someclass.Someprop).Should.Not.Equal(1);
 1. Not
 
 ### To "Build" ###
-I hate how .NET shoves all the packages in a global folder...  
-`dnu restore --packages packages`
-
-I'm still working out the `DNVM` thing.
+I'm still working out the `dnx` thing.
 
 ### To Test ###
-`dnx . test`
+```
+dnu restore
+dnx . test
+```
