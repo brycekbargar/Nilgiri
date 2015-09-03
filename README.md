@@ -1,5 +1,5 @@
 # Nilgiri
-[![Build Status](https://travis-ci.org/brycekbargar/Nilgiri.svg)](https://travis-ci.org/brycekbargar/Nilgiri)
+[![Build Status](https://travis-ci.org/brycekbargar/Nilgiri.svg)](https://travis-ci.org/brycekbargar/Nilgiri)[![codecov.io](http://codecov.io/github/brycekbargar/Nilgiri/coverage.svg?branch=master)](http://codecov.io/github/brycekbargar/Nilgiri?branch=master)
 
 Chai.js style assertions for .NET  
 *nilgiri is some sort of black tea but it was the only one that started with 'n'...*
