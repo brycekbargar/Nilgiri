@@ -19,10 +19,10 @@ Expect(() => Someclass.Someprop).To.Not.Equal(1);
 
 #### Should ####
 ```
-using Nilgiri.Should;
+using static Nilgiri.ShouldStyle;
 
-__._(1).Should.Equal(1);
-__._(() => Someclass.Someprop).Should.Not.Equal(1);
+_(1).Should.Equal(1);
+_(() => Someclass.Someprop).Should.Not.Equal(1);
 ```
 
 ### Currently Implemented ###

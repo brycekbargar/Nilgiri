@@ -1,7 +1,7 @@
 namespace Nilgiri.IntegrationTests
 {
   using Xunit;
-  using Nilgiri.Should;
+  using static Nilgiri.ShouldStyle;
 
   public partial class StaticExpect
   {
@@ -14,8 +14,8 @@ namespace Nilgiri.IntegrationTests
         {
           var testValue = 1;
 
-          var exFunc = Record.Exception(() => __._(() => testValue).Should.Equal(testValue));
-          var exValue = Record.Exception(() => __._(testValue).Should.Equal(testValue));
+          var exFunc = Record.Exception(() => _(() => testValue).Should.Equal(testValue));
+          var exValue = Record.Exception(() => _(testValue).Should.Equal(testValue));
 
           Assert.Null(exFunc);
           Assert.Null(exValue);
@@ -26,8 +26,8 @@ namespace Nilgiri.IntegrationTests
         {
           var testValue = @"I'm a string!";
 
-          var exFunc = Record.Exception(() => __._(() => testValue).Should.Equal(testValue));
-          var exValue = Record.Exception(() => __._(testValue).Should.Equal(testValue));
+          var exFunc = Record.Exception(() => _(() => testValue).Should.Equal(testValue));
+          var exValue = Record.Exception(() => _(testValue).Should.Equal(testValue));
 
           Assert.Null(exFunc);
           Assert.Null(exValue);
@@ -38,8 +38,8 @@ namespace Nilgiri.IntegrationTests
         {
           var testValue = new { I = "Have ", AtLeast = 3, Properties = true};
 
-          var exFunc = Record.Exception(() => __._(() => testValue).Should.Equal(testValue));
-          var exValue = Record.Exception(() => __._(testValue).Should.Equal(testValue));
+          var exFunc = Record.Exception(() => _(() => testValue).Should.Equal(testValue));
+          var exValue = Record.Exception(() => _(testValue).Should.Equal(testValue));
 
           Assert.Null(exFunc);
           Assert.Null(exValue);

@@ -1,4 +1,4 @@
-namespace Nilgiri.Should
+namespace Nilgiri
 {
   using System;
   using Nilgiri.Core;
@@ -26,7 +26,7 @@ namespace Nilgiri.Should
     }
   }
 
-  public static class __
+  public static class ShouldStyle
   {
     public static IShouldContainer<T> _<T>(Func<T> testExpression)
     {

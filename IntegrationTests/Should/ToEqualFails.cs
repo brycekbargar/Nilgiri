@@ -1,7 +1,7 @@
 namespace Nilgiri.IntegrationTests
 {
   using Xunit;
-  using Nilgiri.Should;
+  using static Nilgiri.ShouldStyle;
 
   public partial class StaticShould
   {
@@ -15,8 +15,8 @@ namespace Nilgiri.IntegrationTests
           var testValue = 1;
           var otherValue = 1612316;
 
-          var exFunc = Record.Exception(() => __._(() => testValue).Should.Equal(otherValue));
-          var exValue = Record.Exception(() => __._(testValue).Should.Equal(otherValue));
+          var exFunc = Record.Exception(() => _(() => testValue).Should.Equal(otherValue));
+          var exValue = Record.Exception(() => _(testValue).Should.Equal(otherValue));
 
           Assert.NotNull(exFunc);
           Assert.NotNull(exValue);
@@ -27,8 +27,8 @@ namespace Nilgiri.IntegrationTests
         {
           var testValue = @"I'm a string!";
           var otherValue = @"Another string";
-          var exFunc = Record.Exception(() => __._(() => testValue).Should.Equal(otherValue));
-          var exValue = Record.Exception(() => __._(testValue).Should.Equal(otherValue));
+          var exFunc = Record.Exception(() => _(() => testValue).Should.Equal(otherValue));
+          var exValue = Record.Exception(() => _(testValue).Should.Equal(otherValue));
 
           Assert.NotNull(exFunc);
           Assert.NotNull(exValue);
@@ -40,8 +40,8 @@ namespace Nilgiri.IntegrationTests
           var testValue = new { I = "Have ", AtLeast = 3, Properties = true};
           var otherValue = new { I = "Do not have ", AtLeast = 5, Properties = true};
 
-          var exFunc = Record.Exception(() => __._(() => testValue).Should.Equal(otherValue));
-          var exValue = Record.Exception(() => __._(testValue).Should.Equal(otherValue));
+          var exFunc = Record.Exception(() => _(() => testValue).Should.Equal(otherValue));
+          var exValue = Record.Exception(() => _(testValue).Should.Equal(otherValue));
 
           Assert.NotNull(exFunc);
           Assert.NotNull(exValue);
