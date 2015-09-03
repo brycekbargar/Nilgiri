@@ -10,5 +10,7 @@ namespace Nilgiri.Core
     {
       TestExpression = testExpression;
     }
+
+    public bool IsNegated { get; set; }
   }
 }
