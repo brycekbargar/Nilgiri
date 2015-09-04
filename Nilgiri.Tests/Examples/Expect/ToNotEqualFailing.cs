@@ -1,13 +1,13 @@
-namespace Nilgiri.IntegrationTests
+namespace Nilgiri.Examples
 {
   using Xunit;
   using static Nilgiri.ExpectStyle;
 
-  public partial class StaticExpect
+  public partial class ExampleOf_Expect
   {
-    public partial class _To_Not_Equal
+    public partial class To_Not_Equal
     {
-      public class Fails
+      public class Failing
       {
         [Fact]
         public void Int32()

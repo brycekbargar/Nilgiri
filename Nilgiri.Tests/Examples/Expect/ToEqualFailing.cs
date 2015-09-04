@@ -1,13 +1,13 @@
-namespace Nilgiri.IntegrationTests
+namespace Nilgiri.Examples
 {
   using Xunit;
-  using static Nilgiri.ShouldStyle;
+  using static Nilgiri.ExpectStyle;
 
-  public partial class StaticShould
+  public partial class ExampleOf_Expect
   {
-    public partial class _Equal
+    public partial class To_Equal
     {
-      public class Fails
+      public class Failing
       {
         [Fact]
         public void Int32()
@@ -15,8 +15,8 @@ namespace Nilgiri.IntegrationTests
           var testValue = 1;
           var otherValue = 1612316;
 
-          var exFunc = Record.Exception(() => _(() => testValue).Should.Equal(otherValue));
-          var exValue = Record.Exception(() => _(testValue).Should.Equal(otherValue));
+          var exFunc = Record.Exception(() => Expect(() => testValue).To.Equal(otherValue));
+          var exValue = Record.Exception(() => Expect(testValue).To.Equal(otherValue));
 
           Assert.NotNull(exFunc);
           Assert.NotNull(exValue);
@@ -27,8 +27,8 @@ namespace Nilgiri.IntegrationTests
         {
           var testValue = @"I'm a string!";
           var otherValue = @"Another string";
-          var exFunc = Record.Exception(() => _(() => testValue).Should.Equal(otherValue));
-          var exValue = Record.Exception(() => _(testValue).Should.Equal(otherValue));
+          var exFunc = Record.Exception(() => Expect(() => testValue).To.Equal(otherValue));
+          var exValue = Record.Exception(() => Expect(testValue).To.Equal(otherValue));
 
           Assert.NotNull(exFunc);
           Assert.NotNull(exValue);
@@ -40,8 +40,8 @@ namespace Nilgiri.IntegrationTests
           var testValue = new { I = "Have ", AtLeast = 3, Properties = true};
           var otherValue = new { I = "Do not have ", AtLeast = 5, Properties = true};
 
-          var exFunc = Record.Exception(() => _(() => testValue).Should.Equal(otherValue));
-          var exValue = Record.Exception(() => _(testValue).Should.Equal(otherValue));
+          var exFunc = Record.Exception(() => Expect(() => testValue).To.Equal(otherValue));
+          var exValue = Record.Exception(() => Expect(testValue).To.Equal(otherValue));
 
           Assert.NotNull(exFunc);
           Assert.NotNull(exValue);
