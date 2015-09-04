@@ -30,7 +30,7 @@ _(() => Someclass.Someprop).Should.Not.Equal(1);
 1. Not
 
 ### To "Build" ###
-I'm still working out the `dnx` thing.
+`dnu build src/Nilgiri test/Nilgiri.Tests`
 
 ### To Test ###
 ```

@@ -1,2 +1,3 @@
 packages
 project.lock.json
+**/bin
