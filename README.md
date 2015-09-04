@@ -35,5 +35,5 @@ I'm still working out the `dnx` thing.
 ### To Test ###
 ```
 dnu restore
-dnx . test
+dnx test/Nilgiri.Tests test
 ```

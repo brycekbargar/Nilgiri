@@ -15,17 +15,12 @@
     "bdd"
   ],
   "title": "Nilgiri",
+  "version": "1.0.0-alpha",
   "language": "en-us",
   "repository": {
     "type": "git",
     "url": "https://github.com/brycekbargar/Nilgiri"
   },
   "dependencies": {
-    "xunit": "2.1.0-beta3-*",
-    "xunit.runner.dnx": "2.1.0-beta3-*",
-    "fakeiteasy": "2.0.0-beta009"
-  },
-  "commands": {
-    "test": "xunit.runner.dnx"
   }
 }
