@@ -25,9 +25,12 @@ _(1).Should.Equal(1);
 _(() => Someclass.Someprop).Should.Not.Equal(1);
 ```
 
+There are complete examples of each style in various scenarios in the `Nilgiri.Tests/Examples` folder.
+
 ### Currently Implemented ###
 1. Equal
 1. Not
+1. A/An
 
 ### To "Build" ###
 `dnu build Nilgiri`
