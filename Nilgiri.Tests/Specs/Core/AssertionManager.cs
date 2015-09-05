@@ -20,6 +20,19 @@ namespace Nilgiri.Specs.Core
       }
     }
 
+    public class Be
+    {
+      [Fact]
+      public void Returns_itself()
+      {
+        var subject = new Subject(null, null);
+
+        var beSubject = subject.Be;
+
+        Assert.Equal(subject, beSubject);
+      }
+    }
+
     public class Not
     {
       [Fact]
