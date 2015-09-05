@@ -21,7 +21,7 @@ namespace Nilgiri
     {
       get
       {
-        return new AssertionManager<T>(new AssertionState<T>(_testExpression), new EqualAsserter());
+        return new AssertionManager<T>(new AssertionState<T>(_testExpression), new EqualAsserter(), new TypeAsserter());
       }
     }
   }

@@ -2,6 +2,7 @@ namespace Nilgiri.Specs.Core
 {
   using Xunit;
   using FakeItEasy;
+  using static FakeItEasy.Repeated;
   using Nilgiri.Core;
 
   using Subject = Nilgiri.Core.AssertionManager<int>;
@@ -17,6 +18,19 @@ namespace Nilgiri.Specs.Core
         var toSubject = subject.To;
 
         Assert.Equal(subject, toSubject);
+      }
+    }
+
+    public class Be
+    {
+      [Fact]
+      public void Returns_itself()
+      {
+        var subject = new Subject(null, null);
+
+        var beSubject = subject.Be;
+
+        Assert.Equal(subject, beSubject);
       }
     }
 
@@ -59,6 +73,22 @@ namespace Nilgiri.Specs.Core
         subject.Equal(1);
 
         A.CallTo(() => asserter.Assert(assertionState, 1)).MustHaveHappened();
+      }
+    }
+
+    public class A_An
+    {
+      [Fact]
+      public void Passes_state_to_registered_asserter()
+      {
+        var assertionState = new AssertionState<int>(() => 1);
+        var asserter = A.Fake<ITypeAsserter>();
+        var subject = new Subject(assertionState, null, asserter);
+
+        subject.A<int>();
+        subject.An<int>();
+
+        A.CallTo(() => asserter.Assert(assertionState, typeof(int))).MustHaveHappened(Exactly.Twice);
       }
     }
   }
