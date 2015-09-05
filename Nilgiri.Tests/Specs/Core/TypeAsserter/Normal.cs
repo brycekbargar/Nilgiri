@@ -3,15 +3,11 @@ namespace Nilgiri.Specs.Core
   using System;
   using Xunit;
   using Nilgiri.Core;
+  using Nilgiri.Tests.Common;
 
   using Subject = Nilgiri.Core.TypeAsserter;
   public partial class TypeAsserter
   {
-    private class StubClass { }
-    private class StubSubClass : StubClass { }
-    private class StubClassContainer { public StubClass StubClass { get { return new StubSubClass(); } } }
-    private class NotStubClass { }
-
     public class Normal
     {
       private Subject _subject;

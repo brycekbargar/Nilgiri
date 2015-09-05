@@ -3,6 +3,7 @@ namespace Nilgiri.Specs.Core
   using System;
   using Xunit;
   using Nilgiri.Core;
+  using Nilgiri.Tests.Common;
 
   using Subject = Nilgiri.Core.TypeAsserter;
   public partial class TypeAsserter
