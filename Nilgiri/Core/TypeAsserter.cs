@@ -12,6 +12,12 @@ namespace Nilgiri.Core
     public void Assert<T>(AssertionState<T> assertionState, Type assertedType)
     {
       var givenType = typeof(T);
+      var typeValue = assertionState.TestExpression();
+      if(typeValue != null)
+      {
+        givenType = typeValue.GetType();
+      }
+
       if(
       (Equals(givenType, assertedType) &&
       !assertionState.IsNegated)

@@ -7,6 +7,11 @@ namespace Nilgiri.Specs.Core
   using Subject = Nilgiri.Core.TypeAsserter;
   public partial class TypeAsserter
   {
+    private class StubClass { }
+    private class StubSubClass : StubClass { }
+    private class StubClassContainer { public StubClass StubClass { get { return new StubSubClass(); } } }
+    private class NotStubClass { }
+
     public class Normal
     {
       private Subject _subject;
@@ -29,9 +34,6 @@ namespace Nilgiri.Specs.Core
         Assert.NotNull(exFail);
       }
 
-      private class StubClass { }
-      private class NotStubClass { }
-
       [Fact]
       public void ReferenceTypes()
       {
@@ -40,6 +42,32 @@ namespace Nilgiri.Specs.Core
 
         var exPass = Record.Exception(() => _subject.Assert(testState, typeof(StubClass)));
         var exFail = Record.Exception(() => _subject.Assert(testState, typeof(NotStubClass)));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
+
+      [Fact]
+      public void Subclasses()
+      {
+        var testValue = new StubSubClass();
+        var testState = new AssertionState<StubClass>(() => testValue);
+
+        var exPass = Record.Exception(() => _subject.Assert(testState, typeof(StubSubClass)));
+        var exFail = Record.Exception(() => _subject.Assert(testState, typeof(StubClass)));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
+
+      [Fact]
+      public void PolymorphedClasses()
+      {
+        var testValue = new StubClassContainer();
+        var testState = new AssertionState<StubClass>(() => testValue.StubClass);
+
+        var exPass = Record.Exception(() => _subject.Assert(testState, typeof(StubSubClass)));
+        var exFail = Record.Exception(() => _subject.Assert(testState, typeof(StubClass)));
 
         Assert.Null(exPass);
         Assert.NotNull(exFail);

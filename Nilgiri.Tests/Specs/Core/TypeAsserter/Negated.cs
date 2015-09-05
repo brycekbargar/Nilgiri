@@ -29,9 +29,6 @@ namespace Nilgiri.Specs.Core
         Assert.NotNull(exFail);
       }
 
-      private class StubClass { }
-      private class NotStubClass { }
-
       [Fact]
       public void ReferenceTypes()
       {
@@ -40,6 +37,32 @@ namespace Nilgiri.Specs.Core
 
         var exPass = Record.Exception(() => _subject.Assert(testState, typeof(NotStubClass)));
         var exFail = Record.Exception(() => _subject.Assert(testState, typeof(StubClass)));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
+
+      [Fact]
+      public void Subclasses()
+      {
+        var testValue = new StubSubClass();
+        var testState = new AssertionState<StubClass>(() => testValue){ IsNegated = true };
+
+        var exPass = Record.Exception(() => _subject.Assert(testState, typeof(StubClass)));
+        var exFail = Record.Exception(() => _subject.Assert(testState, typeof(StubSubClass)));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
+
+      [Fact]
+      public void PolymorphedClasses()
+      {
+        var testValue = new StubClassContainer();
+        var testState = new AssertionState<StubClass>(() => testValue.StubClass){ IsNegated = true };
+
+        var exPass = Record.Exception(() => _subject.Assert(testState, typeof(StubClass)));
+        var exFail = Record.Exception(() => _subject.Assert(testState, typeof(StubSubClass)));
 
         Assert.Null(exPass);
         Assert.NotNull(exFail);
