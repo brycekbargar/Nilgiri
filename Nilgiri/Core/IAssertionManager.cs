@@ -18,5 +18,7 @@ namespace Nilgiri.Core
 
   public interface IBeedAssertionManager<T>
   {
+    void A<TAssertionType>();
+    void An<TAssertionType>();
   }
 }
