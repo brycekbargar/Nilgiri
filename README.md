@@ -7,6 +7,8 @@ Chai.js style assertions for .NET
 I really liked the [BDD Assertion Styles](http://chaijs.com/api/bdd/) in Chai.js when I dabbled in Node.  
 Why not bring them to .NET?
 
+### To Install ###
+`dnu install Nilgiri`
 
 ### To Use ###
 #### Expect ####
@@ -30,13 +32,12 @@ There are complete examples of each style in various scenarios in the `Nilgiri.T
 ### Currently Implemented ###
 1. Equal
 1. Not
+1. Be
 1. A/An
 
-### To "Build" ###
-`dnu build Nilgiri`
-
-### To Test ###
+### To Build/Test ###
 ```
 dnu restore
+dnu build Nilgiri
 dnx Nilgiri.Tests test
 ```

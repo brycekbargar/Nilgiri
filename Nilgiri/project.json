@@ -1,11 +1,11 @@
 {
   "copyright": "Copyright (c) 2015 Bryce",
-  "licenseUrl": "https://github.com/brycekbargar/Nilgiri/blob/master/LICENSE",
-  "owners": [
-    "Bryce"
-  ],
+  "licenseUrl": "https://raw.githubusercontent.com/brycekbargar/Nilgiri/master/LICENSE",
+  "owners": [ "Bryce" ],
+  "authors": [ "Bryce" ],
   "projectUrl": "https://github.com/brycekbargar/Nilgiri",
   "summary": "Chai.js style assertions for .NET",
+  "description": "Nilgiri is some sort of black tea but it was the only one that started with 'n'...\r\n\r\nI really liked the BDD Assertion Styles (http://chaijs.com/api/bdd/) in Chai.js when I dabbled in Node. Why not bring them to .NET?",
   "tags": [
     "dotnetcore",
     "dnx",
@@ -15,12 +15,27 @@
     "bdd"
   ],
   "title": "Nilgiri",
-  "version": "1.0.0-alpha",
+  "version": "1.0.2-alpha",
   "language": "en-us",
   "repository": {
     "type": "git",
     "url": "https://github.com/brycekbargar/Nilgiri"
   },
-  "dependencies": {
-  }
+  "configurations": {
+    "Debug": {
+      "compilationOptions": {
+        "define": ["DEBUG", "TRACE"]
+      }
+    },
+    "Release": {
+      "compilationOptions": {
+        "define": ["RELEASE"],
+        "optimize": true
+      }
+    }
+  },
+  "frameworks": {
+    "dnx451": {}
+  },
+  "dependencies": {},
 }

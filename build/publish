@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Publish Nilgiri to Nuget
+#
+
+dnu pack Nilgiri --configuration Release
+dnx build/Nuget.exe push Nilgiri/bin/Release/Nilgiri."$(grep '"version":' Nilgiri/project.json | sed 's/  "version": "\(.*\)",/\1/')".nupkg
