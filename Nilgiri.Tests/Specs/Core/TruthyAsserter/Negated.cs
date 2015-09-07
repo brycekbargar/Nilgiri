@@ -45,6 +45,28 @@ namespace Nilgiri.Specs.Core
         Assert.Null(exPass);
         Assert.Null(exPass2);
       }
+
+      [Fact]
+      public void String()
+      {
+        var testStateFail = new AssertionState<string>(() => "A truthy string!") { IsNegated = true };
+        var testStatePass = new AssertionState<string>(() => null) { IsNegated = true };
+        var testStatePass2 = new AssertionState<string>(() => System.String.Empty) { IsNegated = true };
+        var testStatePass3 = new AssertionState<string>(() => "") { IsNegated = true };
+        var testStatePass4 = new AssertionState<string>(() => " ") { IsNegated = true };
+
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exPass2 = Record.Exception(() => _subject.Assert(testStatePass2));
+        var exPass3 = Record.Exception(() => _subject.Assert(testStatePass3));
+        var exPass4 = Record.Exception(() => _subject.Assert(testStatePass4));
+
+        Assert.NotNull(exFail);
+        Assert.Null(exPass);
+        Assert.Null(exPass2);
+        Assert.Null(exPass3);
+        Assert.Null(exPass4);
+      }
     }
   }
 }

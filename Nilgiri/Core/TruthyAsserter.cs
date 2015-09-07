@@ -30,22 +30,35 @@ namespace Nilgiri.Core
 
     public void Assert<T>(AssertionState<T> assertionState)
     {
-      assertionState.IsNegated = !assertionState.IsNegated;
+      var tType = typeof(T);
 
-      Type nullableType = Nullable.GetUnderlyingType(typeof(T));
+      Type nullableType = Nullable.GetUnderlyingType(tType);
       if (nullableType != null)
       {
         var nullableValue = assertionState.TestExpression();
         if(nullableValue != null)
         {
           Assert<object>(
-            new AssertionState<object>(() => (object)nullableValue){ IsNegated = assertionState.IsNegated },
+            new AssertionState<object>(() => (object)nullableValue){ IsNegated = !assertionState.IsNegated },
             _valueTypeDefaults[nullableType]);
 
           return;
         }
       }
 
+      if(tType == typeof(String))
+      {
+        var isTruthyString = !String.IsNullOrWhiteSpace(assertionState.TestExpression() as String);
+        if(
+          (isTruthyString && assertionState.IsNegated) ||
+          (!isTruthyString && !assertionState.IsNegated))
+        {
+          throw new Exception();
+        }
+        return;
+      }
+
+      assertionState.IsNegated = !assertionState.IsNegated;
       Assert<T>(assertionState, default(T));
     }
   }
