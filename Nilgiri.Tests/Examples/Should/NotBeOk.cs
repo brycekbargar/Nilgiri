@@ -20,6 +20,9 @@ namespace Nilgiri.Examples
       {
         _((bool?)false).Should.Not.Be.Ok();
         _(() => (bool?)false).Should.Not.Be.Ok();
+
+        _((bool?)null).Should.Not.Be.Ok();
+        _(() => (bool?)null).Should.Not.Be.Ok();
       }
 
       [Fact]
@@ -33,7 +36,7 @@ namespace Nilgiri.Examples
 
         _("").Should.Not.Be.Ok();
         _(() => "").Should.Not.Be.Ok();
-        
+
         _("   ").Should.Not.Be.Ok();
         _(() => "   ").Should.Not.Be.Ok();
       }
