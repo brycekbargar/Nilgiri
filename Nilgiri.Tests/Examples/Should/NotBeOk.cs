@@ -2,7 +2,7 @@ namespace Nilgiri.Examples
 {
   using Xunit;
   using Nilgiri.Tests.Common;
-  using static Nilgiri.ExpectStyle;
+  using static Nilgiri.ShouldStyle;
 
   public partial class ExampleOf_Should
   {
