@@ -67,6 +67,19 @@ namespace Nilgiri.Specs.Core
         Assert.NotNull(exFail3);
         Assert.NotNull(exFail4);
       }
+
+      [Fact]
+      public void ReferenceTypes()
+      {
+        var testStatePass = new AssertionState<StubClass>(() => new StubClass());
+        var testStateFail = new AssertionState<StubClass>(() => null);
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
     }
   }
 }
