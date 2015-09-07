@@ -11,97 +11,36 @@ namespace Nilgiri.Examples
       [Fact]
       public void ValueTypes()
       {
-        var exPassValue = Record.Exception(() =>
-          _(1).Should.Be.A<int>());
-        var exPassFunc = Record.Exception(() =>
-          _(() => 1).Should.Be.A<int>());
-        var exFailValue = Record.Exception(() =>
-          _(1).Should.Be.A<bool>());
-        var exFailFunc = Record.Exception(() =>
-          _(() => 1).Should.Be.A<bool>());
-
-        Assert.Null(exPassValue);
-        Assert.Null(exPassFunc);
-        Assert.NotNull(exFailValue);
-        Assert.NotNull(exFailFunc);
+        _(1).Should.Be.A<int>();
+        _(() => 1).Should.Be.A<int>();
       }
 
       [Fact]
       public void ReferenceTypes()
       {
-        var testValue = new StubClass();
-
-        var exPassValue = Record.Exception(() =>
-          _(testValue).Should.Be.A<StubClass>());
-        var exPassFunc = Record.Exception(() =>
-          _(() => testValue).Should.Be.A<StubClass>());
-        var exFailValue = Record.Exception(() =>
-          _(testValue).Should.Be.A<NotStubClass>());
-        var exFailFunc = Record.Exception(() =>
-          _(() => testValue).Should.Be.A<NotStubClass>());
-
-        Assert.Null(exPassValue);
-        Assert.Null(exPassFunc);
-        Assert.NotNull(exFailValue);
-        Assert.NotNull(exFailFunc);
+        _(new StubClass()).Should.Be.A<StubClass>();
+        _(() => new StubClass()).Should.Be.A<StubClass>();
       }
 
       [Fact]
       public void Subclasses()
       {
-        var testValue = new StubSubClass();
-
-        var exPassValue = Record.Exception(() =>
-          _(testValue).Should.Be.A<StubSubClass>());
-        var exPassFunc = Record.Exception(() =>
-          _(() => testValue).Should.Be.A<StubSubClass>());
-        var exFailValue = Record.Exception(() =>
-          _(testValue).Should.Be.A<StubClass>());
-        var exFailFunc = Record.Exception(() =>
-          _(() => testValue).Should.Be.A<StubClass>());
-
-        Assert.Null(exPassValue);
-        Assert.Null(exPassFunc);
-        Assert.NotNull(exFailValue);
-        Assert.NotNull(exFailFunc);
+        _(new StubSubClass()).Should.Be.A<StubSubClass>();
+        _(() => new StubSubClass()).Should.Be.A<StubSubClass>();
       }
 
       [Fact]
       public void PolymorphedClasses()
       {
-        var testValue = new StubClassContainer();
-
-        var exPassValue = Record.Exception(() =>
-          _(testValue.StubClass).Should.Be.A<StubSubClass>());
-        var exPassFunc = Record.Exception(() =>
-          _(() => testValue.StubClass).Should.Be.A<StubSubClass>());
-        var exFailValue = Record.Exception(() =>
-          _(testValue.StubClass).Should.Be.A<StubClass>());
-        var exFailFunc = Record.Exception(() =>
-          _(() => testValue.StubClass).Should.Be.A<StubClass>());
-
-        Assert.Null(exPassValue);
-        Assert.Null(exPassFunc);
-        Assert.NotNull(exFailValue);
-        Assert.NotNull(exFailFunc);
+        _(new StubClassContainer().StubClass).Should.Be.A<StubSubClass>();
+        _(() => new StubClassContainer().StubClass).Should.Be.A<StubSubClass>();
       }
 
       [Fact]
       public void Null()
       {
-        var exPassValue = Record.Exception(() =>
-          _((StubClass)null).Should.Be.A<StubClass>());
-        var exPassFunc = Record.Exception(() =>
-          _(() => (StubClass)null).Should.Be.A<StubClass>());
-        var exFailValue = Record.Exception(() =>
-          _((StubClass)null).Should.Be.A<NotStubClass>());
-        var exFailFunc = Record.Exception(() =>
-          _(() => (StubClass)null).Should.Be.A<NotStubClass>());
-
-        Assert.Null(exPassValue);
-        Assert.Null(exPassFunc);
-        Assert.NotNull(exFailValue);
-        Assert.NotNull(exFailFunc);
+        _((StubClass)null).Should.Be.A<StubClass>();
+        _(() => (StubClass)null).Should.Be.A<StubClass>();
       }
     }
   }

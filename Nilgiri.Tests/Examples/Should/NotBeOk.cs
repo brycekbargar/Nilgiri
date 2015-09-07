@@ -27,10 +27,13 @@ namespace Nilgiri.Examples
       {
         _((string)null).Should.Not.Be.Ok();
         _(() => (string)null).Should.Not.Be.Ok();
+
         _(System.String.Empty).Should.Not.Be.Ok();
         _(() => System.String.Empty).Should.Not.Be.Ok();
+
         _("").Should.Not.Be.Ok();
         _(() => "").Should.Not.Be.Ok();
+        
         _("   ").Should.Not.Be.Ok();
         _(() => "   ").Should.Not.Be.Ok();
       }
