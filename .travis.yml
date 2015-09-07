@@ -9,5 +9,10 @@ script:
   - dnx Nilgiri.Tests test -parallel none
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: script
+  script: build/publish
+  on:
+    branch: master
 notifications:
   email: false
