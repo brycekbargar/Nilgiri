@@ -27,10 +27,13 @@ namespace Nilgiri.Examples
       {
         Expect((string)null).To.Not.Be.Ok();
         Expect(() => (string)null).To.Not.Be.Ok();
+
         Expect(System.String.Empty).To.Not.Be.Ok();
         Expect(() => System.String.Empty).To.Not.Be.Ok();
+
         Expect("").To.Not.Be.Ok();
         Expect(() => "").To.Not.Be.Ok();
+        
         Expect("   ").To.Not.Be.Ok();
         Expect(() => "   ").To.Not.Be.Ok();
       }
