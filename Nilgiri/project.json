@@ -5,7 +5,7 @@
   "authors": [ "Bryce" ],
   "projectUrl": "https://github.com/brycekbargar/Nilgiri",
   "summary": "Chai.js style assertions for .NET",
-  "description": "Nilgiri is some sort of black tea but it was the only one that started with 'n'...\r\n\r\nI really liked the BDD Assertion Styles (http://chaijs.com/api/bdd/) in Chai.js when I dabbled in Node. Why not bring them to .NET?",
+  "description": "Nilgiri is some sort of black tea but it was the only one that started with 'n'...\r\nI really liked the BDD Assertion Styles (http://chaijs.com/api/bdd/) in Chai.js when I dabbled in Node. Why not bring them to .NET?\r\nFull examples can be found at https://github.com/brycekbargar/Nilgiri/tree/master/Nilgiri.Tests/Examples",
   "tags": [
     "dotnetcore",
     "dnx",
@@ -15,7 +15,8 @@
     "bdd"
   ],
   "title": "Nilgiri",
-  "version": "1.0.5-alpha",
+  "version": "1.0.6-alpha",
+  "releaseNotes" : "Implemented Expect.To.Be.Ok and Should.Be.Ok",
   "language": "en-us",
   "repository": {
     "type": "git",
