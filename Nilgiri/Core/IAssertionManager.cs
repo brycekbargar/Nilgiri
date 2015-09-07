@@ -20,5 +20,6 @@ namespace Nilgiri.Core
   {
     void A<TAssertionType>();
     void An<TAssertionType>();
+    void Ok();
   }
 }

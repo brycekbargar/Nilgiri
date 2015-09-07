@@ -7,7 +7,7 @@ namespace Nilgiri
   {
     public static IToableAssertionManager<T> Expect<T>(Func<T> testExpression)
     {
-      return new AssertionManager<T>(new AssertionState<T>(testExpression), new EqualAsserter(), new TypeAsserter());
+      return new AssertionManager<T>(new AssertionState<T>(testExpression), new EqualAsserter(), new TypeAsserter(), new TruthyAsserter());
     }
 
     public static IToableAssertionManager<T> Expect<T>(T testValue)
