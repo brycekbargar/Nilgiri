@@ -11,97 +11,36 @@ namespace Nilgiri.Examples
       [Fact]
       public void ValueTypes()
       {
-        var exFailValue = Record.Exception(() =>
-          Expect(1).To.Not.Be.An<int>());
-        var exFailFunc = Record.Exception(() =>
-          Expect(() => 1).To.Not.Be.An<int>());
-        var exPassValue = Record.Exception(() =>
-          Expect(1).To.Not.Be.An<bool>());
-        var exPassFunc = Record.Exception(() =>
-          Expect(() => 1).To.Not.Be.An<bool>());
-
-        Assert.Null(exPassValue);
-        Assert.Null(exPassFunc);
-        Assert.NotNull(exFailValue);
-        Assert.NotNull(exFailFunc);
+        Expect(1).To.Not.Be.An<bool>();
+        Expect(() => 1).To.Not.Be.An<bool>();
       }
 
       [Fact]
       public void ReferenceTypes()
       {
-        var testValue = new StubClass();
-
-        var exFailValue = Record.Exception(() =>
-          Expect(testValue).To.Not.Be.An<StubClass>());
-        var exFailFunc = Record.Exception(() =>
-          Expect(() => testValue).To.Not.Be.An<StubClass>());
-        var exPassValue = Record.Exception(() =>
-          Expect(testValue).To.Not.Be.An<NotStubClass>());
-        var exPassFunc = Record.Exception(() =>
-          Expect(() => testValue).To.Not.Be.An<NotStubClass>());
-
-        Assert.Null(exPassValue);
-        Assert.Null(exPassFunc);
-        Assert.NotNull(exFailValue);
-        Assert.NotNull(exFailFunc);
+        Expect(new StubClass()).To.Not.Be.An<NotStubClass>();
+        Expect(() => new StubClass()).To.Not.Be.An<NotStubClass>();
       }
 
       [Fact]
       public void Subclasses()
       {
-        var testValue = new StubSubClass();
-
-        var exFailValue = Record.Exception(() =>
-          Expect(testValue).To.Not.Be.An<StubSubClass>());
-        var exFailFunc = Record.Exception(() =>
-          Expect(() => testValue).To.Not.Be.An<StubSubClass>());
-        var exPassValue = Record.Exception(() =>
-          Expect(testValue).To.Not.Be.An<StubClass>());
-        var exPassFunc = Record.Exception(() =>
-          Expect(() => testValue).To.Not.Be.An<StubClass>());
-
-        Assert.Null(exPassValue);
-        Assert.Null(exPassFunc);
-        Assert.NotNull(exFailValue);
-        Assert.NotNull(exFailFunc);
+        Expect(new StubSubClass()).To.Not.Be.An<StubClass>();
+        Expect(() => new StubSubClass()).To.Not.Be.An<StubClass>();
       }
 
       [Fact]
       public void PolymorphedClasses()
       {
-        var testValue = new StubClassContainer();
-
-        var exFailValue = Record.Exception(() =>
-          Expect(testValue.StubClass).To.Not.Be.An<StubSubClass>());
-        var exFailFunc = Record.Exception(() =>
-          Expect(() => testValue.StubClass).To.Not.Be.An<StubSubClass>());
-        var exPassValue = Record.Exception(() =>
-          Expect(testValue.StubClass).To.Not.Be.An<StubClass>());
-        var exPassFunc = Record.Exception(() =>
-          Expect(() => testValue.StubClass).To.Not.Be.An<StubClass>());
-
-        Assert.Null(exPassValue);
-        Assert.Null(exPassFunc);
-        Assert.NotNull(exFailValue);
-        Assert.NotNull(exFailFunc);
+        Expect(new StubClassContainer().StubClass).To.Not.Be.An<StubClass>();
+        Expect(() => new StubClassContainer().StubClass).To.Not.Be.An<StubClass>();
       }
 
       [Fact]
       public void Null()
       {
-        var exFailValue = Record.Exception(() =>
-          Expect((StubClass)null).To.Not.Be.An<StubClass>());
-        var exFailFunc = Record.Exception(() =>
-          Expect(() => (StubClass)null).To.Not.Be.An<StubClass>());
-        var exPassValue = Record.Exception(() =>
-          Expect((StubClass)null).To.Not.Be.An<NotStubClass>());
-        var exPassFunc = Record.Exception(() =>
-          Expect(() => (StubClass)null).To.Not.Be.An<NotStubClass>());
-
-        Assert.Null(exPassValue);
-        Assert.Null(exPassFunc);
-        Assert.NotNull(exFailValue);
-        Assert.NotNull(exFailFunc);
+        Expect((StubClass)null).To.Not.Be.An<NotStubClass>();
+        Expect(() => (StubClass)null).To.Not.Be.An<NotStubClass>();
       }
     }
   }
