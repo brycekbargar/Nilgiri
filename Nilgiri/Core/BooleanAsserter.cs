@@ -12,7 +12,11 @@ namespace Nilgiri.Core
     public void Assert<T>(AssertionState<T> assertionState)
     {
       Assert<object>(
-        new AssertionState<object>(() => (object)assertionState.TestExpression()), (object)!assertionState.IsNegated);
+        new AssertionState<object>(() => (object)assertionState.TestExpression())
+        {
+          IsNegated = assertionState.IsNegated
+        },
+        (object)true);
     }
   }
 }

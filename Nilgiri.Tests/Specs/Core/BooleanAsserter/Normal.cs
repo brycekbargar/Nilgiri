@@ -28,6 +28,16 @@ namespace Nilgiri.Specs.Core
         Assert.Null(exPass);
         Assert.NotNull(exFail);
       }
+
+      [Fact]
+      public void ValueTypes()
+      {
+        var testState = new AssertionState<int>(() => 1);
+
+        var exFail = Record.Exception(() => _subject.Assert(testState));
+
+        Assert.NotNull(exFail);
+      }
     }
   }
 }
