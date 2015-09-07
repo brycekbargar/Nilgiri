@@ -1,5 +1,7 @@
 namespace Nilgiri.Core
 {
+  using Nilgiri.Core.DependencyInjection;
+
   public class AssertionManager<T> :
     IAssertionManager<T>,
     INegatableAssertionManager<T>,
@@ -7,16 +9,12 @@ namespace Nilgiri.Core
     IBeedAssertionManager<T>
   {
     private readonly AssertionState<T> _assertionState;
-    private readonly IEqualAsserter _equalAsserter;
-    private readonly ITypeAsserter _typeAsserter;
-    private readonly ITruthyAsserter _truthyAsserter;
+    private readonly IAsserterFactory _asserterFactory;
 
-    public AssertionManager(AssertionState<T> assertionState, IEqualAsserter equalAsserter, ITypeAsserter typeAsserter = null, ITruthyAsserter truthyAsserter = null)
+    public AssertionManager(AssertionState<T> assertionState, IAsserterFactory asserterFactory)
     {
       _assertionState = assertionState;
-      _equalAsserter = equalAsserter;
-      _typeAsserter = typeAsserter;
-      _truthyAsserter = truthyAsserter;
+      _asserterFactory = asserterFactory;
     }
 
     public INegatableAssertionManager<T> To { get { return this; } }
@@ -34,12 +32,12 @@ namespace Nilgiri.Core
 
     public void Equal(T toEqual)
     {
-      _equalAsserter.Assert<T>(_assertionState, toEqual);
+      _asserterFactory.Get<IEqualAsserter>().Assert<T>(_assertionState, toEqual);
     }
 
     public void A<TAssertionType>()
     {
-      _typeAsserter.Assert<T>(_assertionState, typeof(TAssertionType));
+      _asserterFactory.Get<ITypeAsserter>().Assert<T>(_assertionState, typeof(TAssertionType));
     }
 
     public void An<TAssertionType>()
@@ -49,7 +47,7 @@ namespace Nilgiri.Core
 
     public void Ok()
     {
-      _truthyAsserter.Assert<T>(_assertionState);
+      _asserterFactory.Get<ITruthyAsserter>().Assert<T>(_assertionState);
     }
   }
 }

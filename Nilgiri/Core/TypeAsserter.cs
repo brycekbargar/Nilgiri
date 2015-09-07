@@ -2,7 +2,7 @@ namespace Nilgiri.Core
 {
   using System;
 
-  public interface ITypeAsserter
+  public interface ITypeAsserter : IAsserter
   {
     void Assert<T>(AssertionState<T> assertionState, Type assertedType);
   }

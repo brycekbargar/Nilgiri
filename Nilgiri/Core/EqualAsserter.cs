@@ -2,7 +2,7 @@ namespace Nilgiri.Core
 {
   using System;
 
-  public interface IEqualAsserter
+  public interface IEqualAsserter : IAsserter
   {
     void Assert<T>(AssertionState<T> assertionState, T toEqual);
   }

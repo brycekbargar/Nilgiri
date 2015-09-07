@@ -2,6 +2,7 @@ namespace Nilgiri
 {
   using System;
   using Nilgiri.Core;
+  using Nilgiri.Core.DependencyInjection;
 
   public interface IShouldContainer<T>
   {
@@ -21,7 +22,7 @@ namespace Nilgiri
     {
       get
       {
-        return new AssertionManager<T>(new AssertionState<T>(_testExpression), new EqualAsserter(), new TypeAsserter(), new TruthyAsserter());
+        return new AssertionManager<T>(new AssertionState<T>(_testExpression), new AsserterFactory());
       }
     }
   }

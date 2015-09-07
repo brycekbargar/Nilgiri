@@ -3,7 +3,7 @@ namespace Nilgiri.Core
   using System;
   using System.Collections.Generic;
 
-  public interface ITruthyAsserter
+  public interface ITruthyAsserter : IAsserter
   {
     void Assert<T>(AssertionState<T> assertionState);
   }

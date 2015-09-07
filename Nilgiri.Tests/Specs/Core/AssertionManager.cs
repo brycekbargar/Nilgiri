@@ -4,6 +4,7 @@ namespace Nilgiri.Specs.Core
   using FakeItEasy;
   using static FakeItEasy.Repeated;
   using Nilgiri.Core;
+  using Nilgiri.Core.DependencyInjection;
 
   using Subject = Nilgiri.Core.AssertionManager<int>;
   public class AssertionManager
@@ -67,8 +68,11 @@ namespace Nilgiri.Specs.Core
       public void Passes_state_to_registered_asserter()
       {
         var assertionState = new AssertionState<int>(() => 1);
+        var asserterFactory = A.Fake<IAsserterFactory>();
         var asserter = A.Fake<IEqualAsserter>();
-        var subject = new Subject(assertionState, asserter);
+        A.CallTo(() => asserterFactory.Get<IEqualAsserter>()).Returns(asserter);
+
+        var subject = new Subject(assertionState, asserterFactory);
 
         subject.Equal(1);
 
@@ -82,13 +86,34 @@ namespace Nilgiri.Specs.Core
       public void Passes_state_to_registered_asserter()
       {
         var assertionState = new AssertionState<int>(() => 1);
+        var asserterFactory = A.Fake<IAsserterFactory>();
         var asserter = A.Fake<ITypeAsserter>();
-        var subject = new Subject(assertionState, null, asserter);
+        A.CallTo(() => asserterFactory.Get<ITypeAsserter>()).Returns(asserter);
+
+        var subject = new Subject(assertionState, asserterFactory);
 
         subject.A<int>();
         subject.An<int>();
 
         A.CallTo(() => asserter.Assert(assertionState, typeof(int))).MustHaveHappened(Exactly.Twice);
+      }
+
+      public class Ok
+      {
+        [Fact]
+        public void Passes_state_to_registered_asserter()
+        {
+          var assertionState = new AssertionState<int>(() => 1);
+          var asserterFactory = A.Fake<IAsserterFactory>();
+          var asserter = A.Fake<ITruthyAsserter>();
+          A.CallTo(() => asserterFactory.Get<ITruthyAsserter>()).Returns(asserter);
+
+          var subject = new Subject(assertionState, asserterFactory);
+
+          subject.Ok();
+
+          A.CallTo(() => asserter.Assert(assertionState)).MustHaveHappened();
+        }
       }
     }
   }
