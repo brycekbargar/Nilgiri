@@ -29,6 +29,22 @@ namespace Nilgiri.Specs.Core
         Assert.Null(exPass);
         Assert.NotNull(exFail);
       }
+
+      [Fact]
+      public void Nullable()
+      {
+        var testStatePass = new AssertionState<bool?>(() => (bool?)true) { IsNegated = true };
+        var testStateFail = new AssertionState<bool?>(() => (bool?)false) { IsNegated = true };
+        var testStateFail2 = new AssertionState<bool?>(() => (bool?)null) { IsNegated = true };
+
+        var exFail = Record.Exception(() => _subject.Assert(testStatePass));
+        var exPass = Record.Exception(() => _subject.Assert(testStateFail));
+        var exPass2 = Record.Exception(() => _subject.Assert(testStateFail2));
+
+        Assert.NotNull(exFail);
+        Assert.Null(exPass);
+        Assert.Null(exPass2);
+      }
     }
   }
 }
