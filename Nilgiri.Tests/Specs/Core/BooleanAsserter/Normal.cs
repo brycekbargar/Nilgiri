@@ -1,0 +1,33 @@
+namespace Nilgiri.Specs.Core
+{
+  using System;
+  using Xunit;
+  using Nilgiri.Core;
+
+  using Subject = Nilgiri.Core.BooleanAsserter;
+  public partial class BooleanAsserter
+  {
+    public class Normal
+    {
+      private Subject _subject;
+
+      public Normal()
+      {
+        _subject = new Subject();
+      }
+
+      [Fact]
+      public void Boolean()
+      {
+        var testStatePass = new AssertionState<bool>(() => true);
+        var testStateFail = new AssertionState<bool>(() => false);
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
+    }
+  }
+}
