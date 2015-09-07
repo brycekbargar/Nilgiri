@@ -1,8 +1,8 @@
 namespace Nilgiri.Specs.Core
 {
-  using System;
   using Xunit;
   using Nilgiri.Core;
+  using Nilgiri.Tests.Common;
 
   using Subject = Nilgiri.Core.BooleanAsserter;
   public partial class BooleanAsserter
@@ -33,6 +33,16 @@ namespace Nilgiri.Specs.Core
       public void ValueTypes()
       {
         var testState = new AssertionState<int>(() => 1) { IsNegated = true };
+
+        var exPass = Record.Exception(() => _subject.Assert(testState));
+
+        Assert.Null(exPass);
+      }
+
+      [Fact]
+      public void ReferenceTypes()
+      {
+        var testState = new AssertionState<StubClass>(() => new StubClass()) { IsNegated = true };
 
         var exPass = Record.Exception(() => _subject.Assert(testState));
 
