@@ -23,5 +23,6 @@ namespace Nilgiri.Core
     void Ok();
     void True();
     void False();
+    void Null();
   }
 }

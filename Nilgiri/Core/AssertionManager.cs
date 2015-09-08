@@ -61,5 +61,10 @@ namespace Nilgiri.Core
       _assertionState.IsNegated = !_assertionState.IsNegated;
       True();
     }
+
+    public void Null()
+    {
+      _asserterFactory.Get<INullAsserter>().Assert<T>(_assertionState);
+    }
   }
 }
