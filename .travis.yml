@@ -6,7 +6,7 @@ install:
   - dnvm install 1.0.0-beta6 -r mono
   - dnu restore
 script:
-  - dnx Nilgiri.Tests test -parallel none
+  - cd Nilgiri.Tests && dnx test -parallel none
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 deploy:
