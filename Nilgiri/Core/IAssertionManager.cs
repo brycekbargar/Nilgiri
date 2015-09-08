@@ -22,5 +22,6 @@ namespace Nilgiri.Core
     void An<TAssertionType>();
     void Ok();
     void True();
+    void False();
   }
 }
