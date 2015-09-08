@@ -15,8 +15,8 @@
     "bdd"
   ],
   "title": "Nilgiri",
-  "version": "1.0.6-alpha",
-  "releaseNotes" : "Implemented Expect.To.Be.Ok and Should.Be.Ok",
+  "version": "1.0.7-alpha",
+  "releaseNotes" : "Implement True/False",
   "language": "en-us",
   "repository": {
     "type": "git",

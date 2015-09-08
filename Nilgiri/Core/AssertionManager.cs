@@ -49,5 +49,16 @@ namespace Nilgiri.Core
     {
       _asserterFactory.Get<ITruthyAsserter>().Assert<T>(_assertionState);
     }
+
+    public void True()
+    {
+      _asserterFactory.Get<IBooleanAsserter>().Assert<T>(_assertionState);
+    }
+
+    public void False()
+    {
+      _assertionState.IsNegated = !_assertionState.IsNegated;
+      True();
+    }
   }
 }
