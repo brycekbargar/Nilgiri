@@ -2,6 +2,7 @@ namespace Nilgiri.Specs.Core.Asserters
 {
   using Xunit;
   using Nilgiri.Core;
+  using Nilgiri.Tests.Common;
 
   using Subject = Nilgiri.Core.Asserters.NullAsserter;
   public class NullAsserter
@@ -37,6 +38,19 @@ namespace Nilgiri.Specs.Core.Asserters
         Assert.Null(exPass);
         Assert.NotNull(exFail);
       }
+
+      [Fact]
+      public void ReferenceTypes()
+      {
+        var testStatePass = new AssertionState<StubClass>(() => null);
+        var testStateFail = new AssertionState<StubClass>(() => new StubClass());
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
     }
 
     public class Negated
@@ -63,6 +77,19 @@ namespace Nilgiri.Specs.Core.Asserters
       {
         var testStatePass = new AssertionState<bool?>(() => true) { IsNegated = true };
         var testStateFail = new AssertionState<bool?>(() => (bool?)null) { IsNegated = true };
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
+
+      [Fact]
+      public void ReferenceTypes()
+      {
+        var testStateFail = new AssertionState<StubClass>(() => null) { IsNegated = true };
+        var testStatePass = new AssertionState<StubClass>(() => new StubClass()) { IsNegated = true };
 
         var exPass = Record.Exception(() => _subject.Assert(testStatePass));
         var exFail = Record.Exception(() => _subject.Assert(testStateFail));
