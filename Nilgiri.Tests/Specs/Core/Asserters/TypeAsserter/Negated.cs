@@ -1,11 +1,11 @@
-namespace Nilgiri.Specs.Core
+namespace Nilgiri.Specs.Core.Asserters
 {
   using System;
   using Xunit;
   using Nilgiri.Core;
   using Nilgiri.Tests.Common;
 
-  using Subject = Nilgiri.Core.TypeAsserter;
+  using Subject = Nilgiri.Core.Asserters.TypeAsserter;
   public partial class TypeAsserter
   {
     public class Negated

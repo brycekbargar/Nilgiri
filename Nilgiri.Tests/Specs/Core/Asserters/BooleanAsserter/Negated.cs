@@ -1,10 +1,10 @@
-namespace Nilgiri.Specs.Core
+namespace Nilgiri.Specs.Core.Asserters
 {
   using Xunit;
   using Nilgiri.Core;
   using Nilgiri.Tests.Common;
 
-  using Subject = Nilgiri.Core.BooleanAsserter;
+  using Subject = Nilgiri.Core.Asserters.BooleanAsserter;
   public partial class BooleanAsserter
   {
     public class Negated

@@ -1,4 +1,4 @@
-namespace Nilgiri.Core
+namespace Nilgiri.Core.Asserters
 {
   using System;
   using System.Collections.Generic;

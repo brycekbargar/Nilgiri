@@ -1,7 +1,7 @@
 namespace Nilgiri.Core.DependencyInjection
 {
   using System;
-  using Nilgiri.Core;
+  using Nilgiri.Core.Asserters;
 
   public interface IAsserterFactory
   {

@@ -1,11 +1,11 @@
-namespace Nilgiri.Specs.Core
+namespace Nilgiri.Specs.Core.Asserters
 {
   using System;
   using Xunit;
   using Nilgiri.Core;
   using Nilgiri.Tests.Common;
 
-  using Subject = Nilgiri.Core.TruthyAsserter;
+  using Subject = Nilgiri.Core.Asserters.TruthyAsserter;
   public partial class TruthyAsserter
   {
     public class Normal

@@ -4,6 +4,7 @@ namespace Nilgiri.Specs.Core
   using FakeItEasy;
   using static FakeItEasy.Repeated;
   using Nilgiri.Core;
+  using Nilgiri.Core.Asserters;
   using Nilgiri.Core.DependencyInjection;
 
   using Subject = Nilgiri.Core.AssertionManager<int>;

@@ -1,6 +1,7 @@
 namespace Nilgiri.Core
 {
   using Nilgiri.Core.DependencyInjection;
+  using Nilgiri.Core.Asserters;
 
   public class AssertionManager<T> :
     IAssertionManager<T>,
