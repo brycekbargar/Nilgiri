@@ -35,6 +35,8 @@ There are complete examples of each style in various scenarios in the `Nilgiri.T
 1. Be
 1. A/An
 1. Ok
+1. True
+1. False
 
 ### To Build/Test ###
 ```
