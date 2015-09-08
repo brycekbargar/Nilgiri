@@ -15,8 +15,8 @@
     "bdd"
   ],
   "title": "Nilgiri",
-  "version": "1.0.8-alpha",
-  "releaseNotes" : "Implemented <Expect.To|Should>.[Not].Be.Null",
+  "version": "1.0.9-alpha",
+  "releaseNotes" : "Added monsterous legacy .NET support",
   "language": "en-us",
   "repository": {
     "type": "git",

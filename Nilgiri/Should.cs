@@ -40,3 +40,22 @@ namespace Nilgiri
     }
   }
 }
+
+namespace Nilgiri.LegacyShouldStyle
+{
+  using System;
+  using Nilgiri.Core;
+
+  public static class __
+  {
+    public static IShouldContainer<T> _<T>(Func<T> testExpression)
+    {
+      return ShouldStyle._(testExpression);
+    }
+
+    public static IShouldContainer<T> _<T>(T testValue)
+    {
+      return _(() => testValue);
+    }
+  }
+}

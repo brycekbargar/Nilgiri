@@ -29,6 +29,24 @@ _(() => Someclass.Someprop).Should.Not.Equal(1);
 
 There are complete examples of each style in various scenarios in the `Nilgiri.Tests/Examples` folder.
 
+#### Legacy .NET Support ####
+For c# < 6.0 there is no `using static` so things are a little different. This is already Deprecated(!) and just here until I can use c# 6 at work.
+#### Expect ####
+```
+using Nilgiri.LegacyExpectStyle;
+
+_.Expect(1).To.Equal(1);
+_.Expect(() => Someclass.Someprop).To.Not.Equal(1);
+```
+
+#### Should ####
+```
+using Nilgiri.LegacyShouldStyle;
+
+__._(1).Should.Equal(1);
+__._(() => Someclass.Someprop).Should.Not.Equal(1);
+```
+
 ### Currently Implemented ###
 1. Equal
 1. Not
