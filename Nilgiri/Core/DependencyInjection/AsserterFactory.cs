@@ -29,6 +29,11 @@ namespace Nilgiri.Core.DependencyInjection
         return new TruthyAsserter() as T;
       }
 
+      if(asserterType == typeof(IBooleanAsserter))
+      {
+        return new BooleanAsserter() as T;
+      }
+
       throw new ArgumentOutOfRangeException();
     }
   }
