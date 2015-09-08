@@ -133,23 +133,41 @@ namespace Nilgiri.Specs.Core
 
           A.CallTo(() => asserter.Assert(assertionState)).MustHaveHappened();
         }
+      }
 
-        public class False
+      public class False
+      {
+        [Fact]
+        public void Passes_state_to_registered_asserter()
         {
-          [Fact]
-          public void Passes_state_to_registered_asserter()
-          {
-            var assertionState = new AssertionState<int>(() => 1);
-            var asserterFactory = A.Fake<IAsserterFactory>();
-            var asserter = A.Fake<IBooleanAsserter>();
-            A.CallTo(() => asserterFactory.Get<IBooleanAsserter>()).Returns(asserter);
+          var assertionState = new AssertionState<int>(() => 1);
+          var asserterFactory = A.Fake<IAsserterFactory>();
+          var asserter = A.Fake<IBooleanAsserter>();
+          A.CallTo(() => asserterFactory.Get<IBooleanAsserter>()).Returns(asserter);
 
-            var subject = new Subject(assertionState, asserterFactory);
+          var subject = new Subject(assertionState, asserterFactory);
 
-            subject.False();
+          subject.False();
 
-            A.CallTo(() => asserter.Assert(assertionState)).MustHaveHappened();
-          }
+          A.CallTo(() => asserter.Assert(assertionState)).MustHaveHappened();
+        }
+      }
+
+      public class Null
+      {
+        [Fact]
+        public void Passes_state_to_registered_asserter()
+        {
+          var assertionState = new AssertionState<int>(() => 1);
+          var asserterFactory = A.Fake<IAsserterFactory>();
+          var asserter = A.Fake<INullAsserter>();
+          A.CallTo(() => asserterFactory.Get<INullAsserter>()).Returns(asserter);
+
+          var subject = new Subject(assertionState, asserterFactory);
+
+          subject.Null();
+
+          A.CallTo(() => asserter.Assert(assertionState)).MustHaveHappened();
         }
       }
     }

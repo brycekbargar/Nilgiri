@@ -34,6 +34,11 @@ namespace Nilgiri.Core.DependencyInjection
         return new BooleanAsserter() as T;
       }
 
+      if(asserterType == typeof(INullAsserter))
+      {
+        return new NullAsserter() as T;
+      }
+
       throw new ArgumentOutOfRangeException();
     }
   }

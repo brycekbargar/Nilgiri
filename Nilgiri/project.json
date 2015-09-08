@@ -15,8 +15,8 @@
     "bdd"
   ],
   "title": "Nilgiri",
-  "version": "1.0.7-alpha",
-  "releaseNotes" : "Implement True/False",
+  "version": "1.0.8-alpha",
+  "releaseNotes" : "Implemented <Expect.To|Should>.[Not].Be.Null",
   "language": "en-us",
   "repository": {
     "type": "git",
