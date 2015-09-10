@@ -1,4 +1,4 @@
-namespace Nilgiri.Core.Asserters
+  namespace Nilgiri.Core.Asserters
 {
   using System;
 

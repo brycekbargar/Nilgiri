@@ -66,5 +66,10 @@ namespace Nilgiri.Core
     {
       _asserterFactory.Get<INullAsserter>().Assert<T>(_assertionState);
     }
+
+    public void Empty()
+    {
+      _asserterFactory.Get<IEmptyAsserter>().Assert<T>(_assertionState);
+    }
   }
 }
