@@ -34,6 +34,19 @@ namespace Nilgiri.Specs.Core.Asserters
         Assert.NotNull(exFail);
         Assert.NotNull(exFail2);
       }
+
+      [Fact]
+      public void Array()
+      {
+        var testStateFail = new AssertionState<double[]>(() => new double[] { 35.2165, 1522.5, 15});
+        var testStatePass = new AssertionState<double[]>(() => new double[] {});
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
     }
 
     public class Negated
@@ -62,6 +75,19 @@ namespace Nilgiri.Specs.Core.Asserters
         Assert.Null(exPass2);
         Assert.NotNull(exFail);
         Assert.NotNull(exFail2);
+      }
+
+      [Fact]
+      public void Array()
+      {
+        var testStatePass = new AssertionState<double[]>(() => new double[] { 35.2165, 1522.5, 15}) { IsNegated = true };
+        var testStateFail = new AssertionState<double[]>(() => new double[] {}) { IsNegated = true };
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
       }
     }
   }

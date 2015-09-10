@@ -20,6 +20,16 @@ namespace Nilgiri.Core.Asserters
           },
           0);
       }
+
+      if(typeof(Array).IsAssignableFrom(typeof(T)))
+      {
+        Assert<int>(
+          new AssertionState<int>(() => (assertionState.TestExpression() as Array).Length)
+          {
+            IsNegated = assertionState.IsNegated
+          },
+          0);
+      }
     }
   }
 }
