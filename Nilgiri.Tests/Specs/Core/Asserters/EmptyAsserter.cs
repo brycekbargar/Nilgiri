@@ -1,5 +1,6 @@
 namespace Nilgiri.Specs.Core.Asserters
 {
+  using System.Collections.Generic;
   using Xunit;
   using Nilgiri.Core;
   using Nilgiri.Tests.Common;
@@ -47,6 +48,19 @@ namespace Nilgiri.Specs.Core.Asserters
         Assert.Null(exPass);
         Assert.NotNull(exFail);
       }
+
+      [Fact]
+      public void List()
+      {
+        var testStateFail = new AssertionState<List<int>>(() => new List<int> { 35, 152, 15});
+        var testStatePass = new AssertionState<List<int>>(() => new List<int> {});
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
     }
 
     public class Negated
@@ -82,6 +96,19 @@ namespace Nilgiri.Specs.Core.Asserters
       {
         var testStatePass = new AssertionState<double[]>(() => new double[] { 35.2165, 1522.5, 15}) { IsNegated = true };
         var testStateFail = new AssertionState<double[]>(() => new double[] {}) { IsNegated = true };
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+      }
+
+      [Fact]
+      public void List()
+      {
+        var testStatePass = new AssertionState<List<int>>(() => new List<int> { 35, 152, 15}) { IsNegated = true };
+        var testStateFail = new AssertionState<List<int>>(() => new List<int> {}) { IsNegated = true };
 
         var exPass = Record.Exception(() => _subject.Assert(testStatePass));
         var exFail = Record.Exception(() => _subject.Assert(testStateFail));

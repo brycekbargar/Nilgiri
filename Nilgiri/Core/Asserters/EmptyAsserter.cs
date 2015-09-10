@@ -1,6 +1,7 @@
 namespace Nilgiri.Core.Asserters
 {
   using System;
+  using System.Collections;
 
   public interface IEmptyAsserter : IAsserter
   {
@@ -21,10 +22,10 @@ namespace Nilgiri.Core.Asserters
           0);
       }
 
-      if(typeof(Array).IsAssignableFrom(typeof(T)))
+      if(typeof(ICollection).IsAssignableFrom(typeof(T)))
       {
         Assert<int>(
-          new AssertionState<int>(() => (assertionState.TestExpression() as Array).Length)
+          new AssertionState<int>(() => (assertionState.TestExpression() as ICollection).Count)
           {
             IsNegated = assertionState.IsNegated
           },
