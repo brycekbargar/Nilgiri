@@ -20,6 +20,8 @@ namespace Nilgiri.Core.Asserters
             IsNegated = assertionState.IsNegated
           },
           0);
+
+        return;
       }
 
       if(typeof(IEnumerable).IsAssignableFrom(typeof(T)))
@@ -59,7 +61,11 @@ namespace Nilgiri.Core.Asserters
             IsNegated = assertionState.IsNegated
           },
           0);
+
+        return;
       }
+
+      throw new Exception();
     }
   }
 }

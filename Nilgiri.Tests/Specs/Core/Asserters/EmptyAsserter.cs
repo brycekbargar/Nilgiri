@@ -74,6 +74,19 @@ namespace Nilgiri.Specs.Core.Asserters
         Assert.Null(exPass2);
         Assert.NotNull(exFail2);
       }
+
+      [Fact]
+      public void WithoutLength()
+      {
+        var testStateFail = new AssertionState<bool>(() => true);
+        var testStateFail2 = new AssertionState<StubClass>(() => new StubClass());
+
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+        var exFail2 = Record.Exception(() => _subject.Assert(testStateFail2));
+
+        Assert.NotNull(exFail);
+        Assert.NotNull(exFail2);
+      }
     }
 
     public class Negated
@@ -139,6 +152,19 @@ namespace Nilgiri.Specs.Core.Asserters
         Assert.Null(exPass);
         Assert.NotNull(exFail);
         Assert.Null(exPass2);
+        Assert.NotNull(exFail2);
+      }
+
+      [Fact]
+      public void WithoutLength()
+      {
+        var testStateFail = new AssertionState<bool>(() => true) { IsNegated = true };
+        var testStateFail2 = new AssertionState<StubClass>(() => new StubClass()) { IsNegated = true };
+
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+        var exFail2 = Record.Exception(() => _subject.Assert(testStateFail2));
+
+        Assert.NotNull(exFail);
         Assert.NotNull(exFail2);
       }
     }
