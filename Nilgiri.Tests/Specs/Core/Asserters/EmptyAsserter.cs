@@ -1,6 +1,7 @@
 namespace Nilgiri.Specs.Core.Asserters
 {
   using System.Collections.Generic;
+  using System.Linq;
   using Xunit;
   using Nilgiri.Core;
   using Nilgiri.Tests.Common;
@@ -37,29 +38,41 @@ namespace Nilgiri.Specs.Core.Asserters
       }
 
       [Fact]
-      public void Array()
-      {
-        var testStateFail = new AssertionState<double[]>(() => new double[] { 35.2165, 1522.5, 15});
-        var testStatePass = new AssertionState<double[]>(() => new double[] {});
-
-        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
-        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
-
-        Assert.Null(exPass);
-        Assert.NotNull(exFail);
-      }
-
-      [Fact]
-      public void List()
+      public void ICollection()
       {
         var testStateFail = new AssertionState<List<int>>(() => new List<int> { 35, 152, 15});
         var testStatePass = new AssertionState<List<int>>(() => new List<int> {});
+        var testStateFail2 = new AssertionState<double[]>(() => new double[] { 35.2165, 1522.5, 15});
+        var testStatePass2 = new AssertionState<double[]>(() => new double[] {});
 
         var exPass = Record.Exception(() => _subject.Assert(testStatePass));
         var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+        var exPass2 = Record.Exception(() => _subject.Assert(testStatePass2));
+        var exFail2 = Record.Exception(() => _subject.Assert(testStateFail2));
 
         Assert.Null(exPass);
         Assert.NotNull(exFail);
+        Assert.Null(exPass2);
+        Assert.NotNull(exFail2);
+      }
+
+      [Fact]
+      public void NonICollectionIEnumerable()
+      {
+        var testStateFail = new AssertionState<IEnumerable<int>>(() => Enumerable.Repeat(5,5));
+        var testStatePass = new AssertionState<IEnumerable<int>>(() => Enumerable.Repeat(5,0));
+        var testStateFail2 = new AssertionState<IQueryable<double>>(() => new double[] { 35.2165, 1522.5, 15}.AsQueryable());
+        var testStatePass2 = new AssertionState<IQueryable<double>>(() => new double[] {}.AsQueryable());
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+        var exPass2 = Record.Exception(() => _subject.Assert(testStatePass2));
+        var exFail2 = Record.Exception(() => _subject.Assert(testStateFail2));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+        Assert.Null(exPass2);
+        Assert.NotNull(exFail2);
       }
     }
 
@@ -92,29 +105,41 @@ namespace Nilgiri.Specs.Core.Asserters
       }
 
       [Fact]
-      public void Array()
-      {
-        var testStatePass = new AssertionState<double[]>(() => new double[] { 35.2165, 1522.5, 15}) { IsNegated = true };
-        var testStateFail = new AssertionState<double[]>(() => new double[] {}) { IsNegated = true };
-
-        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
-        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
-
-        Assert.Null(exPass);
-        Assert.NotNull(exFail);
-      }
-
-      [Fact]
       public void List()
       {
         var testStatePass = new AssertionState<List<int>>(() => new List<int> { 35, 152, 15}) { IsNegated = true };
         var testStateFail = new AssertionState<List<int>>(() => new List<int> {}) { IsNegated = true };
+        var testStatePass2 = new AssertionState<double[]>(() => new double[] { 35.2165, 1522.5, 15}) { IsNegated = true };
+        var testStateFail2 = new AssertionState<double[]>(() => new double[] {}) { IsNegated = true };
 
         var exPass = Record.Exception(() => _subject.Assert(testStatePass));
         var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+        var exPass2 = Record.Exception(() => _subject.Assert(testStatePass2));
+        var exFail2 = Record.Exception(() => _subject.Assert(testStateFail2));
 
         Assert.Null(exPass);
         Assert.NotNull(exFail);
+        Assert.Null(exPass2);
+        Assert.NotNull(exFail2);
+      }
+
+      [Fact]
+      public void IEnumerable()
+      {
+        var testStatePass = new AssertionState<IEnumerable<int>>(() => Enumerable.Repeat(5,5)) { IsNegated = true };
+        var testStateFail = new AssertionState<IEnumerable<int>>(() => Enumerable.Repeat(5,0)) { IsNegated = true};
+        var testStatePass2 = new AssertionState<IQueryable<double>>(() => new double[] { 35.2165, 1522.5, 15}.AsQueryable()) { IsNegated = true };
+        var testStateFail2 = new AssertionState<IQueryable<double>>(() => new double[] {}.AsQueryable()) { IsNegated = true };
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+        var exPass2 = Record.Exception(() => _subject.Assert(testStatePass2));
+        var exFail2 = Record.Exception(() => _subject.Assert(testStateFail2));
+
+        Assert.Null(exPass);
+        Assert.NotNull(exFail);
+        Assert.Null(exPass2);
+        Assert.NotNull(exFail2);
       }
     }
   }
