@@ -3,5 +3,6 @@
 # Publish Nilgiri to Nuget
 #
 
+dnu restore Nilgiri
 dnu pack Nilgiri --configuration Release
 dnx build/nuget.exe push -ApiKey $NUGET_API_KEY Nilgiri/bin/Release/Nilgiri."$(grep '"version":' Nilgiri/project.json | sed 's/  "version": "\(.*\)",/\1/')".nupkg || true
