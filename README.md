@@ -1,5 +1,6 @@
 # Nilgiri
-[![Build Status](https://travis-ci.org/brycekbargar/Nilgiri.svg)](https://travis-ci.org/brycekbargar/Nilgiri) [![codecov.io](http://codecov.io/github/brycekbargar/Nilgiri/coverage.svg?branch=master)](http://codecov.io/github/brycekbargar/Nilgiri?branch=master)
+[![Travis CI](https://img.shields.io/travis/brycekbargar/Nilgiri.svg?style=flat-square)](https://travis-ci.org/brycekbargar/Nilgiri) [![codecov.io](https://img.shields.io/codecov/c/github/codecov/Nilgiri.svg?style=flat-square)](http://codecov.io/github/brycekbargar/Nilgiri?branch=master)
+[![Nuget](https://img.shields.io/nuget/vpre/Nilgiri.svg?style=flat-square)](https://www.nuget.org/packages/Nilgiri/)
 
 Chai.js style assertions for .NET  
 *nilgiri is some sort of black tea but it was the only one that started with 'n'...*
@@ -62,5 +63,5 @@ __._(() => Someclass.Someprop).Should.Not.Equal(1);
 ```
 dnu restore
 dnu build Nilgiri
-dnx Nilgiri.Tests test
+cd Nilgiri.Tests; dnx test
 ```
