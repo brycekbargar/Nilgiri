@@ -170,6 +170,24 @@ namespace Nilgiri.Specs.Core
           A.CallTo(() => asserter.Assert(assertionState)).MustHaveHappened();
         }
       }
+
+      public class Empty
+      {
+        [Fact]
+        public void Passes_state_to_registered_asserter()
+        {
+          var assertionState = new AssertionState<int>(() => 1);
+          var asserterFactory = A.Fake<IAsserterFactory>();
+          var asserter = A.Fake<IEmptyAsserter>();
+          A.CallTo(() => asserterFactory.Get<IEmptyAsserter>()).Returns(asserter);
+
+          var subject = new Subject(assertionState, asserterFactory);
+
+          subject.Empty();
+
+          A.CallTo(() => asserter.Assert(assertionState)).MustHaveHappened();
+        }
+      }
     }
   }
 }

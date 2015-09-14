@@ -15,8 +15,8 @@
     "bdd"
   ],
   "title": "Nilgiri",
-  "version": "1.0.9-alpha",
-  "releaseNotes" : "Added monsterous legacy .NET support",
+  "version": "1.0.10-alpha",
+  "releaseNotes" : "Implemented Empty assertion",
   "language": "en-us",
   "repository": {
     "type": "git",
