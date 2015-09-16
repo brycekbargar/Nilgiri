@@ -16,6 +16,14 @@ namespace Nilgiri.Core.Asserters
       return AreEqual(testValue, toEqual, assertionState.IsNegated);
     }
 
+    protected bool AreEqual<T>(AssertionState<T> assertionState, Func<T, object> toEqualTransformer)
+    {
+      var testValue = assertionState.TestExpression();
+      var toEqual = toEqualTransformer(testValue);
+
+      return AreEqual(testValue, toEqual, assertionState.IsNegated);
+    }
+
     private bool AreEqual(object testValue, object toEqual, bool isNegated)
     {
       var areEqual = Equals(testValue, toEqual);
