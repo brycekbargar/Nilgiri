@@ -6,12 +6,24 @@ namespace Nilgiri.Core.Asserters
   {
     protected bool AreEqual<T>(AssertionState<T> assertionState, object toEqual)
     {
-      var areEqual = Equals(assertionState.TestExpression(), toEqual);
+      return AreEqual(assertionState.TestExpression(), toEqual, assertionState.IsNegated);
+    }
+
+    protected bool AreEqual<T>(AssertionState<T> assertionState, Func<T, object> valueTransformer, object toEqual)
+    {
+      var testValue = valueTransformer(assertionState.TestExpression());
+
+      return AreEqual(testValue, toEqual, assertionState.IsNegated);
+    }
+
+    private bool AreEqual(object testValue, object toEqual, bool isNegated)
+    {
+      var areEqual = Equals(testValue, toEqual);
 
       return
-        (areEqual && !assertionState.IsNegated)
+        (areEqual && !isNegated)
         ||
-        (assertionState.IsNegated && !areEqual);
+        (isNegated && !areEqual);
     }
   }
 }
