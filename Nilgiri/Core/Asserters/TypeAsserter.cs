@@ -7,28 +7,14 @@
     void Assert<T>(AssertionState<T> assertionState, Type assertedType);
   }
 
-  public class TypeAsserter : ITypeAsserter
+  public class TypeAsserter : AsserterBase, ITypeAsserter
   {
     public void Assert<T>(AssertionState<T> assertionState, Type assertedType)
     {
-      var givenType = typeof(T);
-      var typeValue = assertionState.TestExpression();
-      if(typeValue != null)
+      if(!AreEqual(assertionState, x => x == null ? typeof(T) : x.GetType(), assertedType))
       {
-        givenType = typeValue.GetType();
+        throw new Exception();
       }
-
-      if(
-      (Equals(givenType, assertedType) &&
-      !assertionState.IsNegated)
-      ||
-      (assertionState.IsNegated &&
-      !Equals(givenType, assertedType)))
-      {
-        return;
-      }
-
-      throw new Exception();
     }
   }
 }

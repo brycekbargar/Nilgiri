@@ -8,7 +8,7 @@ namespace Nilgiri.Core.Asserters
     void Assert<T>(AssertionState<T> assertionState);
   }
 
-  public class TruthyAsserter : EqualAsserter, ITruthyAsserter
+  public class TruthyAsserter : AsserterBase, ITruthyAsserter
   {
     private readonly IDictionary<Type, object> _valueTypeDefaults =
       new Dictionary<Type, object>
@@ -35,31 +35,26 @@ namespace Nilgiri.Core.Asserters
       Type nullableType = Nullable.GetUnderlyingType(tType);
       if (nullableType != null)
       {
-        var nullableValue = assertionState.TestExpression();
-        if(nullableValue != null)
-        {
-          Assert<object>(
-            new AssertionState<object>(() => (object)nullableValue){ IsNegated = !assertionState.IsNegated },
-            _valueTypeDefaults[nullableType]);
-
-          return;
-        }
-      }
-
-      if(tType == typeof(String))
-      {
-        var isTruthyString = !String.IsNullOrWhiteSpace(assertionState.TestExpression() as String);
-        if(
-          (isTruthyString && assertionState.IsNegated) ||
-          (!isTruthyString && !assertionState.IsNegated))
+        if(AreEqual(assertionState, x => x == null ? (object)null : (object)_valueTypeDefaults[nullableType]))
         {
           throw new Exception();
         }
         return;
       }
 
-      assertionState.IsNegated = !assertionState.IsNegated;
-      Assert<T>(assertionState, default(T));
+      if(tType == typeof(String))
+      {
+        if(AreEqual(assertionState, x => String.IsNullOrWhiteSpace(x as String), true))
+        {
+          throw new Exception();
+        }
+        return;
+      }
+
+      if(AreEqual(assertionState, default(T)))
+      {
+        throw new Exception();
+      }
     }
   }
 }

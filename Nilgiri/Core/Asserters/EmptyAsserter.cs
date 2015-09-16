@@ -14,54 +14,35 @@ namespace Nilgiri.Core.Asserters
     {
       if(typeof(T) == typeof(String))
       {
-        Assert<int>(
-          new AssertionState<int>(() => (assertionState.TestExpression() as string).Length)
-          {
-            IsNegated = assertionState.IsNegated
-          },
-          0);
-
+        if(!AreEqual(assertionState, x => (x as String).Length, 0))
+        {
+          throw new Exception();
+        }
         return;
       }
 
       if(typeof(IEnumerable).IsAssignableFrom(typeof(T)))
       {
-        Assert<int>(
-          new AssertionState<int>(() =>
+        if(!AreEqual(assertionState, x =>
+        {
+          if (x as ICollection != null) { return ((ICollection)x).Count; }
+
+          var count = 0;
+          var enumerator = ((IEnumerable)x).GetEnumerator();
+          try
           {
-            var ienumerable = assertionState.TestExpression();
-
-            var possibleCollection = ienumerable as ICollection;
-            if (possibleCollection != null)
-            {
-              return possibleCollection.Count;
-            }
-
-            var count = 0;
-            var enumerator = ((IEnumerable)ienumerable).GetEnumerator();
-            try
-            {
-              while (enumerator.MoveNext())
-              {
-                count++;
-              }
-            }
-            finally
-            {
-              IDisposable possibleDisposable = enumerator as IDisposable;
-              if (possibleDisposable != null)
-              {
-                possibleDisposable.Dispose();
-              }
-            }
-
-            return count;
-          })
+            while (enumerator.MoveNext()) { count++; }
+          }
+          finally
           {
-            IsNegated = assertionState.IsNegated
-          },
-          0);
+            if (enumerator as IDisposable != null) { ((IDisposable)enumerator).Dispose(); }
+          }
 
+          return count;
+        }, 0))
+        {
+          throw new Exception();
+        }
         return;
       }
 
