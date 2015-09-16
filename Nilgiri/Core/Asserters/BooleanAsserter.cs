@@ -7,16 +7,14 @@ namespace Nilgiri.Core.Asserters
     void Assert<T>(AssertionState<T> assertionState);
   }
 
-  public class BooleanAsserter : EqualAsserter, IBooleanAsserter
+  public class BooleanAsserter : AsserterBase, IBooleanAsserter
   {
     public void Assert<T>(AssertionState<T> assertionState)
     {
-      Assert<object>(
-        new AssertionState<object>(() => (object)assertionState.TestExpression())
-        {
-          IsNegated = assertionState.IsNegated
-        },
-        (object)true);
+      if(!AreEqual(assertionState, true))
+      {
+        throw new Exception();
+      }
     }
   }
 }
