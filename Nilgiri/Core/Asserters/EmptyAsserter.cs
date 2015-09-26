@@ -1,8 +1,8 @@
 namespace Nilgiri.Core.Asserters
 {
-  using System;
   using System.Reflection;
   using System.Collections;
+  using Xunit;
 
   public interface IEmptyAsserter : IAsserter
   {
@@ -13,44 +13,25 @@ namespace Nilgiri.Core.Asserters
   {
     public void Assert<T>(AssertionState<T> assertionState)
     {
-      if(typeof(T) == typeof(String))
-      {
-        if(!AreEqual(assertionState, x => (x as String).Length, 0))
-        {
-          throw new Exception();
-        }
-        return;
-      }
 #if DNXCORE50
       if(TypeExtensions.IsAssignableFrom(typeof(IEnumerable), typeof(T)))
 #else
       if(typeof(IEnumerable).IsAssignableFrom(typeof(T)))
 #endif
       {
-        if(!AreEqual(assertionState, x =>
+        if(assertionState.IsNegated)
         {
-          if (x as ICollection != null) { return ((ICollection)x).Count; }
-
-          var count = 0;
-          var enumerator = ((IEnumerable)x).GetEnumerator();
-          try
-          {
-            while (enumerator.MoveNext()) { count++; }
-          }
-          finally
-          {
-            if (enumerator as IDisposable != null) { ((IDisposable)enumerator).Dispose(); }
-          }
-
-          return count;
-        }, 0))
-        {
-          throw new Exception();
+          Xunit.Assert.NotEmpty(assertionState.TestExpression() as IEnumerable);
         }
-        return;
+        else
+        {
+          Xunit.Assert.Empty(assertionState.TestExpression() as IEnumerable);
+        }
       }
-
-      throw new Exception();
+      else
+      {
+        Xunit.Assert.IsType<IEnumerable>(typeof(T));
+      }
     }
   }
 }
