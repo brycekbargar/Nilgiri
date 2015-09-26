@@ -2,11 +2,11 @@
 [![Travis CI](https://img.shields.io/travis/brycekbargar/Nilgiri.svg?style=flat-square)](https://travis-ci.org/brycekbargar/Nilgiri) [![codecov.io](https://img.shields.io/codecov/c/github/codecov/Nilgiri.svg?style=flat-square)](http://codecov.io/github/brycekbargar/Nilgiri?branch=master)
 [![Nuget](https://img.shields.io/nuget/vpre/Nilgiri.svg?style=flat-square)](https://www.nuget.org/packages/Nilgiri/)
 
-Chai.js style assertions for .NET  
+Chai.js style Expect assertions for .NET  
 *nilgiri is some sort of black tea but it was the only one that started with 'n'...*
 
-I really liked the [BDD Assertion Styles](http://chaijs.com/api/bdd/) in Chai.js when I dabbled in Node.  
-Why not bring them to .NET?
+I really liked the [Expect BDD Syntax](http://chaijs.com/guide/styles/#expect) in Chai.js when I dabbled in Node.  
+Why not bring it to .NET?
 
 ### To Install ###
 `dnu install Nilgiri`
@@ -14,38 +14,22 @@ Why not bring them to .NET?
 ### To Use ###
 #### Expect ####
 ```
-using static Nilgiri.ExpectStyle;
+using static Nilgiri.Assertions;
 
 Expect(1).To.Equal(1);
-Expect(() => Someclass.Someprop).To.Not.Equal(1);
+Expect(true).To.Not.Be.False();
 ```
 
-#### Should ####
-```
-using static Nilgiri.ShouldStyle;
-
-_(1).Should.Equal(1);
-_(() => Someclass.Someprop).Should.Not.Equal(1);
-```
-
-There are complete examples of each style in various scenarios in the `Nilgiri.Tests/Examples` folder.
+There are complete examples in the `Nilgiri.Tests/Examples` folder.
 
 #### Legacy .NET Support ####
 For c# < 6.0 there is no `using static` so things are a little different. This is already Deprecated(!) and just here until I can use c# 6 at work.
 #### Expect ####
 ```
-using Nilgiri.LegacyExpectStyle;
+using Nilgiri.LegacyAssertions;
 
-_.Expect(1).To.Equal(1);
-_.Expect(() => Someclass.Someprop).To.Not.Equal(1);
-```
-
-#### Should ####
-```
-using Nilgiri.LegacyShouldStyle;
-
-__._(1).Should.Equal(1);
-__._(() => Someclass.Someprop).Should.Not.Equal(1);
+E.xpect(1).To.Equal(1);
+E.xpect(true).To.Not.Be.False();
 ```
 
 ### Currently Implemented ###

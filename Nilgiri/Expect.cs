@@ -4,35 +4,25 @@ namespace Nilgiri
   using Nilgiri.Core;
   using Nilgiri.Core.DependencyInjection;
 
-  public static class ExpectStyle
+  public static class Assertions
   {
-    public static IToableAssertionManager<T> Expect<T>(Func<T> testExpression)
-    {
-      return new AssertionManager<T>(new AssertionState<T>(testExpression), new AsserterFactory());
-    }
-
     public static IToableAssertionManager<T> Expect<T>(T testValue)
     {
-      return Expect(() => testValue);
+      return new AssertionManager<T>(new AssertionState<T>(() => testValue), new AsserterFactory());
     }
   }
 }
 
-namespace Nilgiri.LegacyExpectStyle
+namespace Nilgiri.LegacyAssertions
 {
   using System;
   using Nilgiri.Core;
 
-  public static class _
+  public static class E
   {
-    public static IToableAssertionManager<T> Expect<T>(Func<T> testExpression)
+    public static IToableAssertionManager<T> xpect<T>(T testValue)
     {
-      return ExpectStyle.Expect(testExpression);
-    }
-
-    public static IToableAssertionManager<T> Expect<T>(T testValue)
-    {
-      return Expect(() => testValue);
+      return Assertions.Expect(testValue);
     }
   }
 }
