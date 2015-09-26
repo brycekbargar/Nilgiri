@@ -6,28 +6,13 @@ namespace Nilgiri.Examples
 
   public partial class ExampleOf_Expect
   {
-    public class To_Equal
+    [Fact]
+    public void To_Equal()
     {
-      [Fact]
-      public void Int32()
-      {
-        var testValue = 156231561;
-        Expect(testValue).To.Equal(testValue);
-      }
-
-      [Fact]
-      public void String()
-      {
-        var testValue = @"I'm a string!";
-        Expect(testValue).To.Equal(testValue);
-      }
-
-      [Fact]
-      public void Object()
-      {
-        var testValue = new StubClass();
-        Expect(testValue).To.Equal(testValue);
-      }
+      Expect(156231561).To.Equal(156231561);
+      Expect(@"I'm a string!").To.Equal(@"I'm a string!");
+      var testValue = new StubClass();
+      Expect(testValue).To.Equal(testValue);
     }
   }
 }
