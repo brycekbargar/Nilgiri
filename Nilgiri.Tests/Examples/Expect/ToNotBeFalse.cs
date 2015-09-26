@@ -1,7 +1,7 @@
 namespace Nilgiri.Examples
 {
   using Xunit;
-  using static Nilgiri.ExpectStyle;
+  using static Nilgiri.Assertions;
 
   public partial class ExampleOf_Expect
   {

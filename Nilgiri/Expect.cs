@@ -4,7 +4,7 @@ namespace Nilgiri
   using Nilgiri.Core;
   using Nilgiri.Core.DependencyInjection;
 
-  public static class ExpectStyle
+  public static class Assertions
   {
     public static IToableAssertionManager<T> Expect<T>(T testValue)
     {
@@ -13,7 +13,7 @@ namespace Nilgiri
   }
 }
 
-namespace Nilgiri.LegacyExpectStyle
+namespace Nilgiri.LegacyAssertions
 {
   using System;
   using Nilgiri.Core;
@@ -22,7 +22,7 @@ namespace Nilgiri.LegacyExpectStyle
   {
     public static IToableAssertionManager<T> xpect<T>(T testValue)
     {
-      return ExpectStyle.Expect(testValue);
+      return Assertions.Expect(testValue);
     }
   }
 }

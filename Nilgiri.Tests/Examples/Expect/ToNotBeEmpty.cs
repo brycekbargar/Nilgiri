@@ -3,7 +3,7 @@ namespace Nilgiri.Examples
   using System.Collections.Generic;
   using System.Linq;
   using Xunit;
-  using static Nilgiri.ExpectStyle;
+  using static Nilgiri.Assertions;
 
   public partial class ExampleOf_Expect
   {
