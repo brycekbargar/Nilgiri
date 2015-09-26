@@ -19,14 +19,30 @@ namespace Nilgiri.Specs.Core.Asserters
       [Fact]
       public void Boolean()
       {
-        var testStatePass = new AssertionState<bool>(() => true);
-        var testStateFail = new AssertionState<bool>(() => false);
+        var testStatePass = new AssertionState<bool?>(true);
+        var testStateFail = new AssertionState<bool?>(false);
 
         var exPass = Record.Exception(() => _subject.Assert(testStatePass));
         var exFail = Record.Exception(() => _subject.Assert(testStateFail));
 
-        Assert.Null(exPass);
+        //Assert.Null(exPass);
         Assert.NotNull(exFail);
+      }
+
+      [Fact]
+      public void Nullable()
+      {
+        var testStatePass = new AssertionState<bool?>(true);
+        var testStateFail = new AssertionState<bool?>(false);
+        var testStateFail2 = new AssertionState<bool?>((bool?)null);
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+        var exFail2 = Record.Exception(() => _subject.Assert(testStateFail2));
+
+        //Assert.Null(exPass);
+        Assert.NotNull(exFail);
+        Assert.NotNull(exFail2);
       }
     }
 
@@ -42,14 +58,30 @@ namespace Nilgiri.Specs.Core.Asserters
       [Fact]
       public void Boolean()
       {
-        var testStatePass = new AssertionState<bool>(() => false) { IsNegated = true };
-        var testStateFail = new AssertionState<bool>(() => true) { IsNegated = true };
+        var testStatePass = new AssertionState<bool?>(false) { IsNegated = true };
+        var testStateFail = new AssertionState<bool?>(true) { IsNegated = true };
 
         var exPass = Record.Exception(() => _subject.Assert(testStatePass));
         var exFail = Record.Exception(() => _subject.Assert(testStateFail));
 
-        Assert.Null(exPass);
+        //Assert.Null(exPass);
         Assert.NotNull(exFail);
+      }
+
+      [Fact]
+      public void Nullable()
+      {
+        var testStateFail = new AssertionState<bool?>(true) { IsNegated = true };
+        var testStatePass = new AssertionState<bool?>(false) { IsNegated = true };
+        var testStateFail2 = new AssertionState<bool?>((bool?)null) { IsNegated = true };
+
+        var exPass = Record.Exception(() => _subject.Assert(testStatePass));
+        var exFail = Record.Exception(() => _subject.Assert(testStateFail));
+        var exFail2 = Record.Exception(() => _subject.Assert(testStateFail2));
+
+        //Assert.Null(exPass);
+        Assert.NotNull(exFail);
+        Assert.NotNull(exFail2);
       }
     }
   }

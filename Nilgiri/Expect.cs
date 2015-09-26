@@ -13,17 +13,12 @@ namespace Nilgiri
 
     public static IBooleanToableAssertionManager Expect(bool testValue)
     {
-      return new BooleanAssertionManager(new AssertionState<bool>(() => testValue), new AsserterFactory());
+      return Expect((bool?)testValue);
     }
 
     public static IBooleanToableAssertionManager Expect(bool? testValue)
     {
-      var assertionState = new AssertionState<bool>(() => testValue ?? false);
-      if(testValue == null)
-      {
-        assertionState.WasNull = true;
-      }
-      return new BooleanAssertionManager(assertionState, new AsserterFactory());
+      return new BooleanAssertionManager(new AssertionState<bool?>((bool?)testValue), new AsserterFactory());
     }
   }
 }

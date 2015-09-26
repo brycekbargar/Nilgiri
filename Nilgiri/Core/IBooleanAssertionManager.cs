@@ -3,7 +3,7 @@ namespace Nilgiri.Core
   using Nilgiri.Core.DependencyInjection;
   using Nilgiri.Core.Asserters;
 
-  public interface IBooleanAssertionManager : IAssertionManager<bool>
+  public interface IBooleanAssertionManager : IAssertionManager<bool?>
   {
     new IBooleanBeedAssertionManager Be { get; }
   }
@@ -13,25 +13,25 @@ namespace Nilgiri.Core
     IBooleanAssertionManager Not { get; }
   }
 
-  public interface IBooleanToableAssertionManager : IToableAssertionManager<bool>
+  public interface IBooleanToableAssertionManager : IToableAssertionManager<bool?>
   {
     new IBooleanNegatableAssertionManager To { get; }
   }
 
-  public interface IBooleanBeedAssertionManager : IBeedAssertionManager<bool>
+  public interface IBooleanBeedAssertionManager : IBeedAssertionManager<bool?>
   {
     void True();
     void False();
   }
 
   public class BooleanAssertionManager :
-    AssertionManager<bool>,
+    AssertionManager<bool?>,
     IBooleanAssertionManager,
     IBooleanNegatableAssertionManager,
     IBooleanToableAssertionManager,
     IBooleanBeedAssertionManager
   {
-    public BooleanAssertionManager(AssertionState<bool> assertionState, IAsserterFactory asserterFactory) : base(assertionState, asserterFactory)
+    public BooleanAssertionManager(AssertionState<bool?> assertionState, IAsserterFactory asserterFactory) : base(assertionState, asserterFactory)
     {
     }
 

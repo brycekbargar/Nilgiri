@@ -1,29 +1,24 @@
 namespace Nilgiri.Core.Asserters
 {
-  using System;
   using Xunit;
+  using System;
 
   public interface IBooleanAsserter : IAsserter
   {
-    void Assert(AssertionState<bool> assertionState);
+    void Assert(AssertionState<bool?> assertionState);
   }
 
   public class BooleanAsserter : AsserterBase, IBooleanAsserter
   {
-    private static void Assert(bool value, bool isNegated)
-    {
-
-    }
-
-    public void Assert(AssertionState<bool> assertionState)
+    public void Assert(AssertionState<bool?> assertionState)
     {
       if(assertionState.IsNegated)
       {
-        Xunit.Assert.False(assertionState.TestExpression());
+        Xunit.Assert.False(assertionState.TestValue);
       }
       else
       {
-        Xunit.Assert.True(assertionState.TestExpression());
+        Xunit.Assert.True(assertionState.TestValue);
       }
     }
   }

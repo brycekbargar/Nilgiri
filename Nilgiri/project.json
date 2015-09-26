@@ -49,6 +49,6 @@
     }
   },
   "dependencies": {
-    "xunit": "2.1.0-beta5-*"
+    "xunit": "2.1.0-rc1-*"
   }
 }
