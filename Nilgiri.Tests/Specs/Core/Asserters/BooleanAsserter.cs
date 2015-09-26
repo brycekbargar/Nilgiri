@@ -28,26 +28,6 @@ namespace Nilgiri.Specs.Core.Asserters
         Assert.Null(exPass);
         Assert.NotNull(exFail);
       }
-
-      [Fact]
-      public void ValueTypes()
-      {
-        var testState = new AssertionState<int>(() => 1);
-
-        var exFail = Record.Exception(() => _subject.Assert(testState));
-
-        Assert.NotNull(exFail);
-      }
-
-      [Fact]
-      public void ReferenceTypes()
-      {
-        var testState = new AssertionState<StubClass>(() => new StubClass());
-
-        var exFail = Record.Exception(() => _subject.Assert(testState));
-
-        Assert.NotNull(exFail);
-      }
     }
 
     public class Negated
@@ -70,26 +50,6 @@ namespace Nilgiri.Specs.Core.Asserters
 
         Assert.Null(exPass);
         Assert.NotNull(exFail);
-      }
-
-      [Fact]
-      public void ValueTypes()
-      {
-        var testState = new AssertionState<int>(() => 1) { IsNegated = true };
-
-        var exPass = Record.Exception(() => _subject.Assert(testState));
-
-        Assert.Null(exPass);
-      }
-
-      [Fact]
-      public void ReferenceTypes()
-      {
-        var testState = new AssertionState<StubClass>(() => new StubClass()) { IsNegated = true };
-
-        var exPass = Record.Exception(() => _subject.Assert(testState));
-
-        Assert.Null(exPass);
       }
     }
   }

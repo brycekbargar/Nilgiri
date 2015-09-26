@@ -36,7 +36,19 @@
     }
   },
   "frameworks": {
-    "dnx451": {}
+    "dnx451": {
+      "frameworkAssemblies": {
+        "System.Runtime": "4.0.0.0"
+      }
+    },
+    "dnxcore50": {
+      "dependencies": {
+        "System.Reflection.TypeExtensions": "4.0.0.0",
+        "System.Runtime": "4.0.20.0"
+      }
+    }
   },
-  "dependencies": {},
+  "dependencies": {
+    "xunit": "2.1.0-beta5-*"
+  }
 }

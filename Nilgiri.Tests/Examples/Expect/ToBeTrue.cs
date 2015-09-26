@@ -9,6 +9,7 @@ namespace Nilgiri.Examples
     public void To_Be_True()
     {
       Expect(true).To.Be.True();
+      Expect((bool?)true).To.Be.True();
     }
   }
 }

@@ -11,7 +11,8 @@ namespace Nilgiri.Core.Asserters
   {
     public void Assert<T>(AssertionState<T> assertionState)
     {
-      if(!AreEqual(assertionState, toEqual: null))
+      if(!assertionState.WasNull &&
+        !AreEqual(assertionState, toEqual: null))
       {
         throw new Exception();
       }

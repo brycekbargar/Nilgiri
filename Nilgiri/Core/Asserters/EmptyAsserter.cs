@@ -1,6 +1,7 @@
 namespace Nilgiri.Core.Asserters
 {
   using System;
+  using System.Reflection;
   using System.Collections;
 
   public interface IEmptyAsserter : IAsserter
@@ -20,8 +21,11 @@ namespace Nilgiri.Core.Asserters
         }
         return;
       }
-
+#if DNXCORE50
+      if(TypeExtensions.IsAssignableFrom(typeof(IEnumerable), typeof(T)))
+#else
       if(typeof(IEnumerable).IsAssignableFrom(typeof(T)))
+#endif
       {
         if(!AreEqual(assertionState, x =>
         {

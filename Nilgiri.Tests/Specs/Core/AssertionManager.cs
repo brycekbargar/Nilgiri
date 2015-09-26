@@ -122,12 +122,12 @@ namespace Nilgiri.Specs.Core
         [Fact]
         public void Passes_state_to_registered_asserter()
         {
-          var assertionState = new AssertionState<int>(() => 1);
+          var assertionState = new AssertionState<bool>(() => true);
           var asserterFactory = A.Fake<IAsserterFactory>();
           var asserter = A.Fake<IBooleanAsserter>();
           A.CallTo(() => asserterFactory.Get<IBooleanAsserter>()).Returns(asserter);
 
-          var subject = new Subject(assertionState, asserterFactory);
+          var subject = new BooleanAssertionManager(assertionState, asserterFactory);
 
           subject.True();
 
@@ -140,12 +140,12 @@ namespace Nilgiri.Specs.Core
         [Fact]
         public void Passes_state_to_registered_asserter()
         {
-          var assertionState = new AssertionState<int>(() => 1);
+          var assertionState = new AssertionState<bool>(() => false);
           var asserterFactory = A.Fake<IAsserterFactory>();
           var asserter = A.Fake<IBooleanAsserter>();
           A.CallTo(() => asserterFactory.Get<IBooleanAsserter>()).Returns(asserter);
 
-          var subject = new Subject(assertionState, asserterFactory);
+          var subject = new BooleanAssertionManager(assertionState, asserterFactory);
 
           subject.False();
 

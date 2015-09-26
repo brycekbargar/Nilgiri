@@ -9,6 +9,7 @@ namespace Nilgiri.Examples
     public void To_Not_Be_False()
     {
       Expect(true).To.Not.Be.False();
+      Expect((bool?)true).To.Not.Be.False();
     }
   }
 }

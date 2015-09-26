@@ -12,6 +12,9 @@ namespace Nilgiri.Core
     private readonly AssertionState<T> _assertionState;
     private readonly IAsserterFactory _asserterFactory;
 
+    protected AssertionState<T> AssertionState { get { return _assertionState; } }
+    protected IAsserterFactory AsserterFactory { get { return _asserterFactory; } }
+
     public AssertionManager(AssertionState<T> assertionState, IAsserterFactory asserterFactory)
     {
       _assertionState = assertionState;
@@ -49,17 +52,6 @@ namespace Nilgiri.Core
     public void Ok()
     {
       _asserterFactory.Get<ITruthyAsserter>().Assert<T>(_assertionState);
-    }
-
-    public void True()
-    {
-      _asserterFactory.Get<IBooleanAsserter>().Assert<T>(_assertionState);
-    }
-
-    public void False()
-    {
-      _assertionState.IsNegated = !_assertionState.IsNegated;
-      True();
     }
 
     public void Null()

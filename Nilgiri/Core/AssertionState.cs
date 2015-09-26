@@ -12,5 +12,6 @@ namespace Nilgiri.Core
     }
 
     public bool IsNegated { get; set; }
+    public bool WasNull { get; set; }
   }
 }

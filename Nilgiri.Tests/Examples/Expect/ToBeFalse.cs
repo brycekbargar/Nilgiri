@@ -10,8 +10,8 @@ namespace Nilgiri.Examples
     public void To_Be_False()
     {
       Expect(false).To.Be.False();
-      Expect(156123).To.Be.False();
-      Expect(new StubClass()).To.Be.False();
+      Expect((bool?)null).To.Be.False();
+      Expect((bool?)false).To.Be.False();
     }
   }
 }

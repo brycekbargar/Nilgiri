@@ -10,6 +10,21 @@ namespace Nilgiri
     {
       return new AssertionManager<T>(new AssertionState<T>(() => testValue), new AsserterFactory());
     }
+
+    public static IBooleanToableAssertionManager Expect(bool testValue)
+    {
+      return new BooleanAssertionManager(new AssertionState<bool>(() => testValue), new AsserterFactory());
+    }
+
+    public static IBooleanToableAssertionManager Expect(bool? testValue)
+    {
+      var assertionState = new AssertionState<bool>(() => testValue ?? false);
+      if(testValue == null)
+      {
+        assertionState.WasNull = true;
+      }
+      return new BooleanAssertionManager(assertionState, new AsserterFactory());
+    }
   }
 }
 
