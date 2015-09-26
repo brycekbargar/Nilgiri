@@ -18,9 +18,9 @@ namespace Nilgiri.LegacyExpectStyle
   using System;
   using Nilgiri.Core;
 
-  public static class _
+  public static class E
   {
-    public static IToableAssertionManager<T> Expect<T>(T testValue)
+    public static IToableAssertionManager<T> xpect<T>(T testValue)
     {
       return ExpectStyle.Expect(testValue);
     }
