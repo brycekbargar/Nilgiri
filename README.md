@@ -12,7 +12,6 @@ Why not bring it to .NET?
 `dnu install Nilgiri`
 
 ### To Use ###
-#### Expect ####
 ```
 using static Nilgiri.Assertions;
 
@@ -24,7 +23,6 @@ There are complete examples in the `Nilgiri.Tests/Examples` folder.
 
 #### Legacy .NET Support ####
 For c# < 6.0 there is no `using static` so things are a little different. This is already Deprecated(!) and just here until I can use c# 6 at work.
-#### Expect ####
 ```
 using Nilgiri.LegacyAssertions;
 
