@@ -12,8 +12,6 @@ namespace Nilgiri.Examples
       public void Int32()
       {
         var testValue = 156231561;
-
-        Expect(() => testValue).To.Equal(testValue);
         Expect(testValue).To.Equal(testValue);
       }
 
@@ -21,8 +19,6 @@ namespace Nilgiri.Examples
       public void String()
       {
         var testValue = @"I'm a string!";
-
-        Expect(() => testValue).To.Equal(testValue);
         Expect(testValue).To.Equal(testValue);
       }
 
@@ -30,8 +26,6 @@ namespace Nilgiri.Examples
       public void Object()
       {
         var testValue = new StubClass();
-
-        Expect(() => testValue).To.Equal(testValue);
         Expect(testValue).To.Equal(testValue);
       }
     }

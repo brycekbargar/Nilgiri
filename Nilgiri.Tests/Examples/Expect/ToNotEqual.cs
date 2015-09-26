@@ -13,8 +13,6 @@ namespace Nilgiri.Examples
       {
         var testValue = 1;
         var otherValue = 1612316;
-
-        Expect(() => testValue).To.Not.Equal(otherValue);
         Expect(testValue).To.Not.Equal(otherValue);
       }
 
@@ -23,8 +21,6 @@ namespace Nilgiri.Examples
       {
         var testValue = @"I'm a string!";
         var otherValue = @"Another string";
-
-        Expect(() => testValue).To.Not.Equal(otherValue);
         Expect(testValue).To.Not.Equal(otherValue);
       }
     }

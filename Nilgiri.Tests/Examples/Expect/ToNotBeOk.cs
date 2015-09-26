@@ -12,37 +12,30 @@ namespace Nilgiri.Examples
       public void Int32()
       {
         Expect(0).To.Not.Be.Ok();
-        Expect(() => 0).To.Not.Be.Ok();
       }
 
       [Fact]
       public void Nullable()
       {
         Expect((bool?)false).To.Not.Be.Ok();
-        Expect(() => (bool?)false).To.Not.Be.Ok();
       }
 
       [Fact]
       public void String()
       {
         Expect((string)null).To.Not.Be.Ok();
-        Expect(() => (string)null).To.Not.Be.Ok();
 
         Expect(System.String.Empty).To.Not.Be.Ok();
-        Expect(() => System.String.Empty).To.Not.Be.Ok();
 
         Expect("").To.Not.Be.Ok();
-        Expect(() => "").To.Not.Be.Ok();
-        
+
         Expect("   ").To.Not.Be.Ok();
-        Expect(() => "   ").To.Not.Be.Ok();
       }
 
       [Fact]
       public void ReferenceTypes()
       {
         Expect((StubClass)null).To.Not.Be.Ok();
-        Expect(() => (StubClass)null).To.Not.Be.Ok();
       }
     }
   }

@@ -12,14 +12,12 @@ namespace Nilgiri.Examples
       public void Nullable()
       {
         Expect((bool?)null).To.Be.Null();
-        Expect(() => (bool?)null).To.Be.Null();
       }
 
       [Fact]
       public void ReferenceTypes()
       {
         Expect((StubClass)null).To.Be.Null();
-        Expect(() => (StubClass)null).To.Be.Null();
       }
     }
   }

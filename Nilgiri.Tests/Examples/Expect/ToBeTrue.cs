@@ -10,7 +10,6 @@ namespace Nilgiri.Examples
       [Fact]
       public void Boolean()
       {
-        Expect(() => true).To.Be.True();
         Expect(true).To.Be.True();
       }
     }

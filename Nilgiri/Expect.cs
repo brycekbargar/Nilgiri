@@ -6,14 +6,9 @@ namespace Nilgiri
 
   public static class ExpectStyle
   {
-    public static IToableAssertionManager<T> Expect<T>(Func<T> testExpression)
-    {
-      return new AssertionManager<T>(new AssertionState<T>(testExpression), new AsserterFactory());
-    }
-
     public static IToableAssertionManager<T> Expect<T>(T testValue)
     {
-      return Expect(() => testValue);
+      return new AssertionManager<T>(new AssertionState<T>(() => testValue), new AsserterFactory());
     }
   }
 }
@@ -25,14 +20,9 @@ namespace Nilgiri.LegacyExpectStyle
 
   public static class _
   {
-    public static IToableAssertionManager<T> Expect<T>(Func<T> testExpression)
-    {
-      return ExpectStyle.Expect(testExpression);
-    }
-
     public static IToableAssertionManager<T> Expect<T>(T testValue)
     {
-      return Expect(() => testValue);
+      return ExpectStyle.Expect(testValue);
     }
   }
 }

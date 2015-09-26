@@ -11,7 +11,6 @@ namespace Nilgiri.Examples
       [Fact]
       public void Boolean()
       {
-        Expect(() => false).To.Be.False();
         Expect(false).To.Be.False();
       }
 
@@ -19,14 +18,12 @@ namespace Nilgiri.Examples
       public void ValueTypes()
       {
         Expect(156123).To.Be.False();
-        Expect(() => 156123).To.Be.False();
       }
 
       [Fact]
       public void ReferenceTypes()
       {
         Expect(new StubClass()).To.Be.False();
-        Expect(() => new StubClass()).To.Be.False();
       }
     }
   }
