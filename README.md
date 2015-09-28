@@ -1,3 +1,10 @@
+## Not in active Dev ##
+Call it another abandonware project from me...  
+I really wanted to learn dnx and travis ci + .net and publishing to nuget. But I really don't want to write/maintain an "enterprise" software package. [I just kind of want to make music...](http://brycekbargar.com/blog/fourier-transforms-are-hard)
+
+So I'm no longer devving on this, though if you want to see how .net works on a mac in atom it's a reasonable example.
+
+
 # Nilgiri
 [![Travis CI](https://img.shields.io/travis/brycekbargar/Nilgiri.svg?style=flat-square)](https://travis-ci.org/brycekbargar/Nilgiri) [![codecov.io](https://img.shields.io/codecov/c/github/codecov/Nilgiri.svg?style=flat-square)](http://codecov.io/github/brycekbargar/Nilgiri?branch=master)
 [![Nuget](https://img.shields.io/nuget/vpre/Nilgiri.svg?style=flat-square)](https://www.nuget.org/packages/Nilgiri/)
